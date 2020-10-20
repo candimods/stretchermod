@@ -1,5 +1,5 @@
 local lit_1 = {
-    {anim = "anim@gangops@morgue@table@",lib = "body_search",name = Config.Language.anim.lie_back, x = 0, y = 0.1, z = 1.52, r = 180.0},
+    {anim = "savecouch@",lib = "body_search",name = Config.Language.anim.lie_back, x = 0, y = 0.1, z = 1.52, r = 180.0},
     {anim = "anim@gangops@morgue@table@",lib = "body_search",name = Config.Language.anim.death, x = 0, y = 0.1, z = 1.52, r = 180.0},
     {anim = "amb@prop_human_seat_chair_food@male@base",lib = "base",name =Config.Language.anim.sit_right, x = 0.0, y = -0.2, z =0.55, r = -90.0},
     {anim = "amb@prop_human_seat_chair_food@male@base",lib = "base",name = Config.Language.anim.sit_left, x = 0.0, y = -0.2, z =0.55, r = 90.0},
