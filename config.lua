@@ -19,6 +19,7 @@ Config.Hash = {
 	{hash = "16ramambo", detection = 2.4, depth = -1.0, height = 0.0},
 	{hash = "safdm2", detection = 2.4, depth = -1.0, height = 0.0},
 	{hash = "safdm3", detection = 2.4, depth = -1.0, height = 0.0},
+	{hash = "safr2", detection = 2.4, depth = -1.0, height = 0.0},
 	{hash = "emsgator", detection = 2.4, depth = -1.0, height = 0.0},
 }
 
