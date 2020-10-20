@@ -21,10 +21,10 @@ requires war menu which is included.
 for the future the abiility to have more than one compatible stretcher 
 
 Stretchers:
-Stryker M1 Stretcher compatible with  powerload system
-Stryker M1 Coroner Stretcher
-Ferno Stretcher
-Ferno Coroner Stretcher 
+1. Stryker M1 Stretcher compatible with  powerload system
+2. Stryker M1 Coroner Stretcher
+3. Ferno Stretcher
+4. Ferno Coroner Stretcher 
 
 # Compatible vehicles:
 This mod is cross compatible with anyother model that uses the base script 
