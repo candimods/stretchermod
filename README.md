@@ -21,7 +21,7 @@ requires war menu which is included.
 5. Lucas3
 
 for the future the abiility to have more than one compatible stretcher atm you 
-hsve to swap out stretchers
+have to swap out stretchers
 
 Compaitible Stretchers:
 1. Stryker M1 Stretcher compatible with  powerload system
