@@ -7,6 +7,8 @@ options to toggle compartment doors and scene lights
 
 expanded stretcher menu allows you toggle on/off stretcher options 
 
+edit the controls in the config.lua
+
 requires war menu which is included.
 
 # Stretcher Components
