@@ -1,5 +1,6 @@
 # stretchermod
 stretcher mod that can be used with candimods vehicle and ambulances for 5M 
+preview video https://youtu.be/VNUHTyffwtk
 
 orginal script by https://forum.cfx.re/t/release-litter-stretcher-v4-0-v2-4/760701
 
