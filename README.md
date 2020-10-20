@@ -7,7 +7,7 @@ options to toggle compartment doors and scene lights
 
 expanded stretcher menu allows you toggle on/off stretcher options 
 
-Stretcher Components
+# Stretcher Components
 1. Longboard
 2. Scoop Stretcher 
 3. EKG Monitor 
@@ -16,13 +16,13 @@ Stretcher Components
 
 for the future the abiility to have more than one compatible stretcher 
 
-Stretchers options
+Stretchers:
 Stryker M1 Stretcher compatible with  powerload system
 Stryker M1 Coroner Stretcher
 Ferno Stretcher
 Ferno Coroner Stretcher 
 
-Compatible vehicles:
+# Compatible vehicles:
 This mod is cross compatible with anyother model that uses the base script 
 
 1. 2020 Rambulance
