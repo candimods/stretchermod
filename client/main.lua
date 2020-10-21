@@ -25,6 +25,24 @@ prop_amb = false
 veh_detect = 0
 
 Citizen.CreateThread(function()
+	while ESX == nil do
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+		Citizen.Wait(0)
+	end
+end)
+
+
+RegisterNetEvent('stretchermod:SpawnVeh')
+AddEventHandler('stretchermod:SpawnVeh', function(hash)
+  local ped = PlayerPedId()
+  local pedCoords = GetEntityCoords(ped)
+  local dimension = GetModelDimensions(hash, vector3(0,0,0), vector3(5.0,5.0,5.0))
+  local pos = pedCoords - GetEntityForwardVector(ped) * dimension.x * 1.5
+  local head = GetEntityHeading(ped) + 90.0
+  ESX.Game.SpawnVehicle(hash, pos, head)
+end)
+
+Citizen.CreateThread(function()
 
 	for i = 1, #labels do
 		AddTextEntry(labels[i][1], labels[i][2])
@@ -149,13 +167,28 @@ Citizen.CreateThread(function()
 							SetVehicleDoorShut(closestObject, 4, false)
 						end
 					end
-					
+
 					if WarMenu.Button(Config.Language.go_out_bed) then
 						DetachEntity(PlayerPedId(), true, true)
 						local x, y, z = table.unpack(GetEntityCoords(closestObject) + GetEntityForwardVector(closestObject) * - i.distance_stop)
 						SetEntityCoords(PlayerPedId(), x, y, z)
 					end
-					
+
+					if WarMenu.Button(Config.Language.fold_bed) then
+            local can = false
+            local model = GetEntityModel(closestObject)
+            for k,v in pairs(Config.ItemsVeh) do
+              if model == v.hash then
+                can = k
+                break
+              end
+            end
+            if can ~= false then
+              ESX.Game.DeleteVehicle(closestObject)
+              TriggerServerEvent('stretchermod:DeleteVeh', can)
+            end
+					end
+
 					if WarMenu.Button('Close Menu') then
 						WarMenu.CloseMenu('hopital')
 					end
