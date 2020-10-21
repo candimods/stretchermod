@@ -32,14 +32,22 @@ Citizen.CreateThread(function()
 end)
 
 
-RegisterNetEvent('stretchermod:SpawnVeh')
-AddEventHandler('stretchermod:SpawnVeh', function(hash)
-  local ped = PlayerPedId()
-  local pedCoords = GetEntityCoords(ped)
-  local dimension = GetModelDimensions(hash, vector3(0,0,0), vector3(5.0,5.0,5.0))
-  local pos = pedCoords - GetEntityForwardVector(ped) * dimension.x * 1.5
-  local head = GetEntityHeading(ped) + 90.0
-  ESX.Game.SpawnVehicle(hash, pos, head)
+RegisterNetEvent('stretchermod:SpawnItem')
+AddEventHandler('stretchermod:SpawnItem', function(key)
+  local v = Config.ItemsVeh[key]
+  if v ~= nil then
+    local ped = PlayerPedId()
+    local pedCoords = GetEntityCoords(ped)
+    local dimension = GetModelDimensions(v.hash, vector3(0,0,0), vector3(5.0,5.0,5.0))
+    local pos = pedCoords - GetEntityForwardVector(ped) * dimension.x * 1.5
+    local head = GetEntityHeading(ped) + 90.0
+    if v.type == 'veh' then
+      ESX.Game.SpawnVehicle(v.hash, pos, head)
+    elseif v.type == 'prop' then
+      pos = pos + vector3(0.0,0.0,-1.0)
+      ESX.Game.SpawnObject(v.hash, pos)
+    end
+  end
 end)
 
 Citizen.CreateThread(function()
