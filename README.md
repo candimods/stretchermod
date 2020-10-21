@@ -14,6 +14,8 @@ edit the controls in the config.lua
 requires war menu which is included.
 
 ESX inventory management compaibility was added by contributing dev
+more stretchers and prop spawining, Only works in ESX
+
 https://youtu.be/lNZhb-iV0ak
 
 # Stretcher Components
