@@ -29,6 +29,7 @@ Config.ItemsVeh = {
   {hash = `stryker_M1`,         type = 'veh',  item = 'stretcher2', remove = 1},
   {hash = `stryker_M1_coroner`, type = 'veh',  item = 'stretcher3', remove = 1},
   {hash = `prop_ld_binbag_01`,  type = 'prop', item = 'stretcher4', remove = 1}, -- When using the stretcher  item, it will spawn a prop_ld_binbag_01 prop and remove 1x item
+
 }
 
 Config.Press = {
