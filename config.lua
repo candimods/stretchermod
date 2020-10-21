@@ -54,6 +54,7 @@ Config.Language = {
 	out_vehicle_bed = "Press ~INPUT_CONTEXT~ to retrieve stretcher",
 	go_out_bed = "Get Out of Bed",
 	delete_bed = "Remove Bed",
+	fold_bed = "Fold Bed",
 	toggle_iv = "Toggle IV Pole",
 	toggle_lp15 = "Toggle Lifepak15 Defib",
 	toggle_lucas = "Toggle Lucas 3",

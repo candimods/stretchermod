@@ -167,13 +167,28 @@ Citizen.CreateThread(function()
 							SetVehicleDoorShut(closestObject, 4, false)
 						end
 					end
-					
+
 					if WarMenu.Button(Config.Language.go_out_bed) then
 						DetachEntity(PlayerPedId(), true, true)
 						local x, y, z = table.unpack(GetEntityCoords(closestObject) + GetEntityForwardVector(closestObject) * - i.distance_stop)
 						SetEntityCoords(PlayerPedId(), x, y, z)
 					end
-					
+
+					if WarMenu.Button(Config.Language.fold_bed) then
+            local can = false
+            local model = GetEntityModel(closestObject)
+            for k,v in pairs(Config.ItemsVeh) do
+              if model == v.hash then
+                can = k
+                break
+              end
+            end
+            if can ~= false then
+              ESX.Game.DeleteVehicle(closestObject)
+              TriggerServerEvent('stretchermod:DeleteVeh', can)
+            end
+					end
+
 					if WarMenu.Button('Close Menu') then
 						WarMenu.CloseMenu('hopital')
 					end

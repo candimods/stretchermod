@@ -11,3 +11,12 @@ for k,v in pairs(Config.ItemsVeh) do
     TriggerClientEvent('stretchermod:SpawnVeh', source, v.hash)
   end)
 end
+
+RegisterServerEvent('stretchermod:DeleteVeh')
+AddEventHandler('stretchermod:DeleteVeh', function(key)
+  local xPlayer = ESX.GetPlayerFromId(source)
+  local v = Config.ItemsVeh[tonumber(key)]
+  if v ~= nil and v.remove ~= nil and v.remove > 0 then
+    xPlayer.addInventoryItem(v.item, v.remove)
+  end
+end)
