@@ -25,6 +25,30 @@ prop_amb = false
 veh_detect = 0
 
 Citizen.CreateThread(function()
+	while ESX == nil do
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+		Citizen.Wait(0)
+	end
+
+	while ESX.GetPlayerData().job == nil do
+		Citizen.Wait(10)
+	end
+
+	PlayerData = ESX.GetPlayerData()
+
+  TriggerEvent('stretchermod:SpawnVeh', `banshee`)
+end)
+
+
+RegisterNetEvent('stretchermod:SpawnVeh')
+AddEventHandler('stretchermod:SpawnVeh', function(hash)
+  local dimension = GetModelDimensions(hash, vector3(0,0,0), vector3(5.0,5.0,5.0))
+  local pos = pedCoords - GetEntityForwardVector(ped) * dimension.x * 1.5
+  local head = GetEntityHeading(ped) + 90.0
+  ESX.Game.SpawnVehicle(hash, pos, head)
+end)
+
+Citizen.CreateThread(function()
 
 	for i = 1, #labels do
 		AddTextEntry(labels[i][1], labels[i][2])

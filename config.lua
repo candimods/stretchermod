@@ -23,6 +23,11 @@ Config.Hash = {
 	{hash = "emsgator", detection = 2.4, depth = -1.0, height = 0.0},
 }
 
+Config.ItemsVeh = {
+  -- {hash = `name of vehicle`, item = 'es_extend item name', remove = how many item to remove on use},
+	{hash = `Stretcher`, item = 'stretcher', remove = 0}, -- When using the stretcher item, it will spawn a Stretcher vehicle and remove 0x item
+}
+
 Config.Press = {
 	open_menu = Keys["Y"],
 	take_bed = Keys["E"],
