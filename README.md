@@ -13,7 +13,8 @@ edit the controls in the config.lua
 
 requires war menu which is included.
 
-ESX compaibility was added by contributing dev
+ESX inventory management compaibility was added by contributing dev
+https://youtu.be/lNZhb-iV0ak
 
 # Stretcher Components
 1. Longboard
