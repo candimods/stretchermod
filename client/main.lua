@@ -8,10 +8,10 @@ local lit_1 = {
     {anim = "amb@world_human_bum_slumped@male@laying_on_right_side@base",lib = "base",name = Config.Language.anim.pls, x = 0.2, y = 0.1, z = 1.6, r = 100.0},
 }
 
-		--- coods every anim coords - z up and down - r is rotation - body 
+		--- coods every anim coords - z up and down - r is rotation - body
 
 
-local labels = {        
+local labels = {
 	{ "MENU_AMBO_HELP", "Press ~INPUT_CONTEXT~ to open/close back doors.~n~Press ~INPUT_HUD_SPECIAL~ to extend power-load.~n~Press ~INPUT_FRONTEND_SELECT~ open/close compartments.~n~Press ~INPUT_SKIP_CUTSCENE~ to toggle scene lights." },
 	{ "MENU_AMBO_HELP2", "Press ~INPUT_CONTEXT~ to open/close back doors.~n~Press ~INPUT_DETONATE~ to take stretcher.~n~Press ~INPUT_HUD_SPECIAL~ to extend power-load.~n~Press ~INPUT_FRONTEND_SELECT~ open/close compartments.~n~Press ~INPUT_SKIP_CUTSCENE~ to toggle scene lights." },
 	{ "MENU_AMBO_HELP3", "Press ~INPUT_CONTEXT~ to open/close back doors.~n~Press ~INPUT_DETONATE~ to stow stretcher.~n~Press ~INPUT_HUD_SPECIAL~ to extend power-load.~n~Press ~INPUT_SKIP_CUTSCENE~ to toggle scene lights." }
@@ -23,6 +23,9 @@ local lit = {
 
 prop_amb = false
 veh_detect = 0
+ped = nil
+pedCoords = nil
+
 
 Citizen.CreateThread(function()
 
@@ -37,11 +40,10 @@ Citizen.CreateThread(function()
 	WarMenu.SetMenuFocusColor('hopital', 255, 255, 255, 255)
 	WarMenu.SetTitleBackgroundSprite('hopital', 'stretchermod', 'banner')
 	while true do
-		local sleep = 2000	
-		local pedCoords = GetEntityCoords(PlayerPedId())
+		local sleep = 2000
 		for _,i in pairs(lit) do
 			local closestObject = GetClosestVehicle(pedCoords, 3.0, GetHashKey("stretcher"), 70)
-		
+
 			if DoesEntityExist(closestObject) then
 				sleep = 5
 				local propCoords = GetEntityCoords(closestObject)
@@ -52,12 +54,12 @@ Citizen.CreateThread(function()
 				local pickupCoords2 = (propCoords + propForward * - 1.2)
 
 				if GetDistanceBetweenCoords(pedCoords, litCoords, true) <= 5.0 then
-					if GetDistanceBetweenCoords(pedCoords, sitCoords, true) <= 2.0 and not IsEntityPlayingAnim(PlayerPedId(), 'anim@heists@box_carry@', 'idle', 3) then
+					if GetDistanceBetweenCoords(pedCoords, sitCoords, true) <= 2.0 and not IsEntityPlayingAnim(ped, 'anim@heists@box_carry@', 'idle', 3) then
 						hintToDisplay(Config.Language.do_action)
 						if IsControlJustPressed(0, Config.Press.do_action) then
 							WarMenu.OpenMenu('hopital')
 						end
-					elseif IsEntityAttachedToEntity(closestObject, PlayerPedId()) == false and not IsEntityPlayingAnim(PlayerPedId(), 'anim@heists@box_carry@', 'idle', 3) then
+					elseif IsEntityAttachedToEntity(closestObject, ped) == false and not IsEntityPlayingAnim(ped, 'anim@heists@box_carry@', 'idle', 3) then
 						if GetDistanceBetweenCoords(pedCoords, pickupCoords, true) <= 2.0 then
 							hintToDisplay(Config.Language.take_bed)
 							-- DrawText3D(0,0,0, Config.language.take_bed, -- waaaaaaa)
@@ -85,13 +87,13 @@ Citizen.CreateThread(function()
 					for _,k in pairs(i.name) do
 						if WarMenu.Button(k.name) then
 							LoadAnim(k.anim)
-							AttachEntityToEntity(PlayerPedId(), closestObject, PlayerPedId(), k.x, k.y, k.z, 0.0, 0.0, k.r, 0.0, false, false, false, false, 2, true)
-							TaskPlayAnim(PlayerPedId(), k.anim, k.lib, 8.0, 8.0, -1, 1, 0, false, false, false)
+							AttachEntityToEntity(ped, closestObject, ped, k.x, k.y, k.z, 0.0, 0.0, k.r, 0.0, false, false, false, false, 2, true)
+							TaskPlayAnim(ped, k.anim, k.lib, 8.0, 8.0, -1, 1, 0, false, false, false)
 						end
 					end
 
---- THIS CONTEXT BELOW WILL TOGGLE ON / OFF VEHICLES EXTRAS USE A REFERENCE WHEN ADD NEW MENU OPTIONS O IS OFF 1 IS ON					
-					
+--- THIS CONTEXT BELOW WILL TOGGLE ON / OFF VEHICLES EXTRAS USE A REFERENCE WHEN ADD NEW MENU OPTIONS O IS OFF 1 IS ON
+
 					if WarMenu.Button(Config.Language.toggle_iv) then
 						if not toggle then
 							SetVehicleExtra(closestObject, 5, 0)
@@ -101,7 +103,7 @@ Citizen.CreateThread(function()
 
 					toggle = not toggle
 				end
-					
+
 					if WarMenu.Button(Config.Language.toggle_lp15) then
 						if not toggle then
 							SetVehicleExtra(closestObject, 3, 0)
@@ -111,7 +113,7 @@ Citizen.CreateThread(function()
 
 					toggle = not toggle
 				end
-					
+
 					if WarMenu.Button(Config.Language.toggle_lucas) then
 						if not toggle then
 							SetVehicleExtra(closestObject, 6, 0)
@@ -121,7 +123,7 @@ Citizen.CreateThread(function()
 
 					toggle = not toggle
 				end
-					
+
 					if WarMenu.Button(Config.Language.toggle_backboard) then
 						if not toggle then
 							SetVehicleExtra(closestObject, 4, 0)
@@ -131,7 +133,7 @@ Citizen.CreateThread(function()
 
 					toggle = not toggle
 				end
-					
+
 				if WarMenu.Button(Config.Language.toggle_scoop) then
 						if not toggle then
 							SetVehicleExtra(closestObject, 7, 0)
@@ -141,7 +143,7 @@ Citizen.CreateThread(function()
 
 					toggle = not toggle
 				end
-				
+
 					if WarMenu.Button(Config.Language.toggle_seat) then
 						if IsVehicleDoorFullyOpen(closestObject, 4) == false then
 							SetVehicleDoorOpen(closestObject, 4, false)
@@ -149,13 +151,13 @@ Citizen.CreateThread(function()
 							SetVehicleDoorShut(closestObject, 4, false)
 						end
 					end
-					
+
 					if WarMenu.Button(Config.Language.go_out_bed) then
-						DetachEntity(PlayerPedId(), true, true)
+						DetachEntity(ped, true, true)
 						local x, y, z = table.unpack(GetEntityCoords(closestObject) + GetEntityForwardVector(closestObject) * - i.distance_stop)
-						SetEntityCoords(PlayerPedId(), x, y, z)
+						SetEntityCoords(ped, x, y, z)
 					end
-					
+
 					if WarMenu.Button('Close Menu') then
 						WarMenu.CloseMenu('hopital')
 					end
@@ -170,8 +172,10 @@ end)
 Citizen.CreateThread(function()
 	prop_exist = 0
 	while true do
+    ped    = PlayerPedId()
+    pedCoords = GetEntityCoords(ped)
 		for _,g in pairs(Config.Hash) do
-			local closestObject = GetClosestVehicle(GetEntityCoords(PlayerPedId()), 7.0, GetHashKey(g.hash), 18)
+			local closestObject = GetClosestVehicle(pedCoords, 7.0, g.hash, 18)
 			if closestObject ~= 0 then
 				veh_detect = closestObject
 				veh_detection = g.detection
@@ -180,21 +184,21 @@ Citizen.CreateThread(function()
 			end
 		end
 		if prop_amb == false then
-			if GetVehiclePedIsIn(PlayerPedId()) == 0 then
+			if GetVehiclePedIsIn(ped) == 0 then
 				if DoesEntityExist(veh_detect) then
-					local coords = GetEntityCoords(veh_detect) + GetEntityForwardVector(veh_detect) * - veh_detection
+					local pedCoords = GetEntityCoords(veh_detect) + GetEntityForwardVector(veh_detect) * - veh_detection
 					local coords_spawn = GetEntityCoords(veh_detect) + GetEntityForwardVector(veh_detect) * - (veh_detection + 4.0)
-					if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), coords.x , coords.y, coords.z, true) <= 5.0 then
-						if not IsEntityPlayingAnim(PlayerPedId(), 'anim@heists@box_carry@', 'idle', 3) and not IsEntityAttachedToAnyVehicle(PlayerPedId()) then
+					if GetDistanceBetweenCoords(pedCoords, pedCoords.x , pedCoords.y, pedCoords.z, true) <= 5.0 then
+						if not IsEntityPlayingAnim(ped, 'anim@heists@box_carry@', 'idle', 3) and not IsEntityAttachedToAnyVehicle(ped) then
 							BeginTextCommandDisplayHelp(labels[1][1])
 							EndTextCommandDisplayHelp(0, 0, 1, -1)
 								for _,m in pairs(lit) do
-									local prop = GetClosestVehicle(GetEntityCoords(PlayerPedId()), 4.0, GetHashKey(m.lit))
+									local prop = GetClosestVehicle(pedCoords, 4.0, GetHashKey(m.lit))
 									if prop ~= 0 then
 										prop_exist = prop
 									end
 								end
-							if IsEntityAttachedToEntity(prop, PlayerPedId()) ~= 0 or prop ~= 0 then
+							if IsEntityAttachedToEntity(prop, ped) ~= 0 or prop ~= 0 then
 								if IsControlJustPressed(0, Config.Press.out_vehicle_bed) then
 									if IsVehicleDoorFullyOpen(veh_detect, 5) then
 										SetVehicleDoorShut(veh_detect, 5, false)
@@ -248,28 +252,28 @@ function prendre(propObject, hash)
 
 	LoadAnim("anim@heists@box_carry@")
 
-	AttachEntityToEntity(propObject, PlayerPedId(), PlayerPedId(), -0.05, 1.3, -0.4 , 180.0, 180.0, 180.0, 0.0, false, false, false, false, 2, true)
-		
-	while IsEntityAttachedToEntity(propObject, PlayerPedId()) do
+	AttachEntityToEntity(propObject, ped, ped, -0.05, 1.3, -0.4 , 180.0, 180.0, 180.0, 0.0, false, false, false, false, 2, true)
+
+	while IsEntityAttachedToEntity(propObject, ped) do
 
 		Citizen.Wait(5)
 
-		if not IsEntityPlayingAnim(PlayerPedId(), 'anim@heists@box_carry@', 'idle', 3) then
-			TaskPlayAnim(PlayerPedId(), 'anim@heists@box_carry@', 'idle', 8.0, 8.0, -1, 50, 0, false, false, false)
+		if not IsEntityPlayingAnim(ped, 'anim@heists@box_carry@', 'idle', 3) then
+			TaskPlayAnim(ped, 'anim@heists@box_carry@', 'idle', 8.0, 8.0, -1, 50, 0, false, false, false)
 		end
 
-		if IsPedDeadOrDying(PlayerPedId()) then
-			ClearPedTasksImmediately(PlayerPedId())
+		if IsPedDeadOrDying(ped) then
+			ClearPedTasksImmediately(ped)
 			SetVehicleExtra(propObject, 1, 1)
 			SetVehicleExtra(propObject, 2, 0)
 			DetachEntity(propObject, true, true)
 			SetVehicleOnGroundProperly(propObject)
 		end
-		if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(veh_detect), true) <= 9.0 then
+		if GetDistanceBetweenCoords(pedCoords, GetEntityCoords(veh_detect), true) <= 9.0 then
 			BeginTextCommandDisplayHelp(labels[3][1])
 			EndTextCommandDisplayHelp(0, 0, 1, -1)
 			if IsControlJustPressed(0, Config.Press.take_stow_stretcher) then
-				ClearPedTasksImmediately(PlayerPedId())
+				ClearPedTasksImmediately(ped)
 				SetVehicleExtra(propObject, 1, 1)
 				SetVehicleExtra(propObject, 2, 0)
 				DetachEntity(propObject, true, true)
@@ -295,13 +299,13 @@ function prendre(propObject, hash)
 		end
 
 		if IsControlJustPressed(0, Config.Press.release_bed) then
-			ClearPedTasksImmediately(PlayerPedId())
+			ClearPedTasksImmediately(ped)
 			SetVehicleExtra(propObject, 1, 1)
 			SetVehicleExtra(propObject, 2, 0)
 			DetachEntity(propObject, true, false)
 			SetVehicleOnGroundProperly(propObject)
 		end
-		
+
 	end
 end
 
@@ -314,14 +318,14 @@ function in_ambulance(propObject, amb, depth, height)
 	while IsEntityAttachedToEntity(propObject, amb) do
 		Citizen.Wait(5)
 
-		if GetVehiclePedIsIn(PlayerPedId()) == 0 then
-			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(amb), true) <= 7.0 then
+		if GetVehiclePedIsIn(ped) == 0 then
+			if GetDistanceBetweenCoords(pedCoords, GetEntityCoords(amb), true) <= 7.0 then
                 BeginTextCommandDisplayHelp(labels[2][1])
                 EndTextCommandDisplayHelp(0, 0, 1, -1)
 				if IsControlJustPressed(0, Config.Press.take_stow_stretcher) then
 					DetachEntity(propObject, true, true)
 					prop_amb = false
-					SetEntityHeading(PlayerPedId(), GetEntityHeading(PlayerPedId()) - 180.0)
+					SetEntityHeading(ped, GetEntityHeading(ped) - 180.0)
 					SetVehicleExtra(propObject, 1, 0)
 					SetVehicleExtra(propObject, 2, 1)
 					prendre(propObject)
@@ -340,7 +344,7 @@ function in_ambulance(propObject, amb, depth, height)
 						SetVehicleDoorOpen(amb, 4, false)
 					end
 				end
-				
+
 				if IsControlJustPressed(0, Config.Press.lights) then
 					if IsVehicleExtraTurnedOn(veh_detect, 11) then
 						SetVehicleExtra(veh_detect, 11, 1)
@@ -352,7 +356,7 @@ function in_ambulance(propObject, amb, depth, height)
 						SetVehicleExtra(veh_detect, 8, 0)
 					end
 				end
-				
+
 				if IsControlJustPressed(0, Config.Press.extra_1) then
 					if IsVehicleExtraTurnedOn(veh_detect, 10) then
 						SetVehicleExtra(veh_detect, 10, 1)
@@ -390,7 +394,7 @@ function DrawText3D(coords, text, size)
 
     local onScreen,_x,_y=World3dToScreen2d(coords.x,coords.y,coords.z + 1.0)
     local px,py,pz=table.unpack(GetGameplayCamCoords())
-    
+
     SetTextScale(0.35, 0.35)
     SetTextFont(4)
     SetTextProportional(1)
