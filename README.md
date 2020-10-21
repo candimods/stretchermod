@@ -13,6 +13,8 @@ edit the controls in the config.lua
 
 requires war menu which is included.
 
+ESX compaibility was added by contributing dev
+
 # Stretcher Components
 1. Longboard
 2. Scoop Stretcher 
