@@ -29,19 +29,13 @@ Citizen.CreateThread(function()
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 		Citizen.Wait(0)
 	end
-
-	while ESX.GetPlayerData().job == nil do
-		Citizen.Wait(10)
-	end
-
-	PlayerData = ESX.GetPlayerData()
-
-  TriggerEvent('stretchermod:SpawnVeh', `banshee`)
 end)
 
 
 RegisterNetEvent('stretchermod:SpawnVeh')
 AddEventHandler('stretchermod:SpawnVeh', function(hash)
+  local ped = PlayerPedId()
+  local pedCoords = GetEntityCoords(ped)
   local dimension = GetModelDimensions(hash, vector3(0,0,0), vector3(5.0,5.0,5.0))
   local pos = pedCoords - GetEntityForwardVector(ped) * dimension.x * 1.5
   local head = GetEntityHeading(ped) + 90.0
