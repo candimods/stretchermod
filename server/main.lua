@@ -8,7 +8,7 @@ for k,v in pairs(Config.ItemsVeh) do
       local xPlayer = ESX.GetPlayerFromId(source)
       xPlayer.removeInventoryItem(v.item, v.remove)
     end
-    TriggerClientEvent('stretchermod:SpawnVeh', source, v.hash)
+    TriggerClientEvent('stretchermod:SpawnItem', source, k)
   end)
 end
 

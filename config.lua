@@ -25,7 +25,11 @@ Config.Hash = {
 
 Config.ItemsVeh = {
   -- {hash = `name of vehicle`, item = 'es_extend item name', remove = how many item to remove on use},
-	{hash = `Stretcher`, item = 'stretcher', remove = 0}, -- When using the stretcher item, it will spawn a Stretcher vehicle and remove 0x item
+  {hash = `Stretcher`,          type = 'veh',  item = 'stretcher',  remove = 1}, -- When using the stretcher  item, it will spawn a Stretcher vehicle and remove 1x item
+  {hash = `stryker_M1`,         type = 'veh',  item = 'stretcher2', remove = 1},
+  {hash = `stryker_M1_coroner`, type = 'veh',  item = 'stretcher3', remove = 1},
+  {hash = `prop_ld_binbag_01`,  type = 'prop', item = 'stretcher4', remove = 1}, -- When using the stretcher  item, it will spawn a prop_ld_binbag_01 prop and remove 1x item
+
 }
 
 Config.Press = {

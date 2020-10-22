@@ -13,6 +13,11 @@ edit the controls in the config.lua
 
 requires war menu which is included.
 
+ESX inventory management compaibility was added by contributing dev
+more stretchers and prop spawining ability added, Only works in ESX
+
+https://youtu.be/lNZhb-iV0ak
+
 # Stretcher Components
 1. Longboard
 2. Scoop Stretcher 
@@ -20,11 +25,10 @@ requires war menu which is included.
 4. IV Pole
 5. Lucas3
 
-for the future the abiility to have more than one compatible stretcher atm you 
-have to swap out stretchers
+abiility to have more than one compatible stretcher 
 
 Compaitible Stretchers:
-1. Stryker M1 Stretcher compatible with  powerload system
+1. Stryker M1 Stretcher 
 2. Stryker M1 Coroner Stretcher
 3. Ferno Stretcher
 4. Ferno Coroner Stretcher 
