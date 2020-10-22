@@ -1,24 +1,7 @@
-local lit_1 = {
-    {anim = "savecouch@",lib = "t_sleep_loop_couch",name = Config.Language.anim.lie_back, x = 0, y = 0.1, z = 1.52, r = 180.0},
-    {anim = "anim@gangops@morgue@table@",lib = "body_search",name = Config.Language.anim.death, x = 0, y = 0.1, z = 1.52, r = 180.0},
-    {anim = "amb@prop_human_seat_chair_food@male@base",lib = "base",name =Config.Language.anim.sit_right, x = 0.0, y = -0.2, z =0.55, r = -90.0},
-    {anim = "amb@prop_human_seat_chair_food@male@base",lib = "base",name = Config.Language.anim.sit_left, x = 0.0, y = -0.2, z =0.55, r = 90.0},
-    {anim = "timetable@jimmy@mics3_ig_15@",lib = "mics3_15_base_jimmy",name = Config.Language.anim.sit_up, x = 0.0, y = 0.15, z =1.52, r = 180.0},
-    {anim = "missheistfbi3b_ig8_2",lib = "cpr_loop_victim",name = Config.Language.anim.convulse, x = 0.0, y = 0.1, z = 1.52, r = 175.0},
-    {anim = "amb@world_human_bum_slumped@male@laying_on_right_side@base",lib = "base",name = Config.Language.anim.pls, x = 0.2, y = 0.1, z = 1.6, r = 100.0},
-}
-
-		--- coods every anim coords - z up and down - r is rotation - body 
-
-
-local labels = {        
+local labels = {
 	{ "MENU_AMBO_HELP", "Press ~INPUT_CONTEXT~ to open/close back doors.~n~Press ~INPUT_HUD_SPECIAL~ to extend power-load.~n~Press ~INPUT_FRONTEND_SELECT~ open/close compartments.~n~Press ~INPUT_SKIP_CUTSCENE~ to toggle scene lights." },
 	{ "MENU_AMBO_HELP2", "Press ~INPUT_CONTEXT~ to open/close back doors.~n~Press ~INPUT_DETONATE~ to take stretcher.~n~Press ~INPUT_HUD_SPECIAL~ to extend power-load.~n~Press ~INPUT_FRONTEND_SELECT~ open/close compartments.~n~Press ~INPUT_SKIP_CUTSCENE~ to toggle scene lights." },
 	{ "MENU_AMBO_HELP3", "Press ~INPUT_CONTEXT~ to open/close back doors.~n~Press ~INPUT_DETONATE~ to stow stretcher.~n~Press ~INPUT_HUD_SPECIAL~ to extend power-load.~n~Press ~INPUT_SKIP_CUTSCENE~ to toggle scene lights." }
-}
-
-local lit = {
-	{lit = "stretcher", distance_stop = 2.4, name = lit_1, title = Config.Language.lit_1}
 }
 
 prop_amb = false
@@ -63,11 +46,11 @@ Citizen.CreateThread(function()
 	WarMenu.SetMenuFocusColor('hopital', 255, 255, 255, 255)
 	WarMenu.SetTitleBackgroundSprite('hopital', 'stretchermod', 'banner')
 	while true do
-		local sleep = 2000	
+		local sleep = 2000
 		local pedCoords = GetEntityCoords(PlayerPedId())
-		for _,i in pairs(lit) do
-			local closestObject = GetClosestVehicle(pedCoords, 3.0, GetHashKey("stretcher"), 70)
-		
+		for k,v in pairs(Config.Lits) do
+			local closestObject = GetClosestVehicle(pedCoords, 3.0, GetHashKey(v.lit), 70)
+
 			if DoesEntityExist(closestObject) then
 				sleep = 5
 				local propCoords = GetEntityCoords(closestObject)
@@ -108,16 +91,16 @@ Citizen.CreateThread(function()
 				end
 
 				if WarMenu.IsMenuOpened('hopital') then
-					for _,k in pairs(i.name) do
-						if WarMenu.Button(k.name) then
-							LoadAnim(k.anim)
-							AttachEntityToEntity(PlayerPedId(), closestObject, PlayerPedId(), k.x, k.y, k.z, 0.0, 0.0, k.r, 0.0, false, false, false, false, 2, true)
-							TaskPlayAnim(PlayerPedId(), k.anim, k.lib, 8.0, 8.0, -1, 1, 0, false, false, false)
+					for k2,v2 in pairs(v.anims) do
+						if WarMenu.Button(v2.name) then
+							LoadAnim(v2.anim)
+							AttachEntityToEntity(PlayerPedId(), closestObject, PlayerPedId(), v2.x, v2.y, v2.z, 0.0, 0.0, v2.r, 0.0, false, false, false, false, 2, true)
+							TaskPlayAnim(PlayerPedId(), v2.anim, v2.lib, 8.0, 8.0, -1, 1, 0, false, false, false)
 						end
 					end
 
---- THIS CONTEXT BELOW WILL TOGGLE ON / OFF VEHICLES EXTRAS USE A REFERENCE WHEN ADD NEW MENU OPTIONS O IS OFF 1 IS ON					
-					
+--- THIS CONTEXT BELOW WILL TOGGLE ON / OFF VEHICLES EXTRAS USE A REFERENCE WHEN ADD NEW MENU OPTIONS O IS OFF 1 IS ON
+
 					if WarMenu.Button(Config.Language.toggle_iv) then
 						if not toggle then
 							SetVehicleExtra(closestObject, 5, 0)
@@ -127,7 +110,7 @@ Citizen.CreateThread(function()
 
 					toggle = not toggle
 				end
-					
+
 					if WarMenu.Button(Config.Language.toggle_lp15) then
 						if not toggle then
 							SetVehicleExtra(closestObject, 3, 0)
@@ -137,7 +120,7 @@ Citizen.CreateThread(function()
 
 					toggle = not toggle
 				end
-					
+
 					if WarMenu.Button(Config.Language.toggle_lucas) then
 						if not toggle then
 							SetVehicleExtra(closestObject, 6, 0)
@@ -147,7 +130,7 @@ Citizen.CreateThread(function()
 
 					toggle = not toggle
 				end
-					
+
 					if WarMenu.Button(Config.Language.toggle_backboard) then
 						if not toggle then
 							SetVehicleExtra(closestObject, 4, 0)
@@ -157,7 +140,7 @@ Citizen.CreateThread(function()
 
 					toggle = not toggle
 				end
-					
+
 				if WarMenu.Button(Config.Language.toggle_scoop) then
 						if not toggle then
 							SetVehicleExtra(closestObject, 7, 0)
@@ -167,7 +150,7 @@ Citizen.CreateThread(function()
 
 					toggle = not toggle
 				end
-				
+
 					if WarMenu.Button(Config.Language.toggle_seat) then
 						if IsVehicleDoorFullyOpen(closestObject, 4) == false then
 							SetVehicleDoorOpen(closestObject, 4, false)
@@ -178,7 +161,7 @@ Citizen.CreateThread(function()
 
 					if WarMenu.Button(Config.Language.go_out_bed) then
 						DetachEntity(PlayerPedId(), true, true)
-						local x, y, z = table.unpack(GetEntityCoords(closestObject) + GetEntityForwardVector(closestObject) * - i.distance_stop)
+						local x, y, z = table.unpack(GetEntityCoords(closestObject) + GetEntityForwardVector(closestObject) * - v.distance_stop)
 						SetEntityCoords(PlayerPedId(), x, y, z)
 					end
 
@@ -290,7 +273,7 @@ function prendre(propObject, hash)
 	LoadAnim("anim@heists@box_carry@")
 
 	AttachEntityToEntity(propObject, PlayerPedId(), PlayerPedId(), -0.05, 1.3, -0.4 , 180.0, 180.0, 180.0, 0.0, false, false, false, false, 2, true)
-		
+
 	while IsEntityAttachedToEntity(propObject, PlayerPedId()) do
 
 		Citizen.Wait(5)
@@ -342,7 +325,7 @@ function prendre(propObject, hash)
 			DetachEntity(propObject, true, false)
 			SetVehicleOnGroundProperly(propObject)
 		end
-		
+
 	end
 end
 
@@ -381,7 +364,7 @@ function in_ambulance(propObject, amb, depth, height)
 						SetVehicleDoorOpen(amb, 4, false)
 					end
 				end
-				
+
 				if IsControlJustPressed(0, Config.Press.lights) then
 					if IsVehicleExtraTurnedOn(veh_detect, 11) then
 						SetVehicleExtra(veh_detect, 11, 1)
@@ -393,7 +376,7 @@ function in_ambulance(propObject, amb, depth, height)
 						SetVehicleExtra(veh_detect, 8, 0)
 					end
 				end
-				
+
 				if IsControlJustPressed(0, Config.Press.extra_1) then
 					if IsVehicleExtraTurnedOn(veh_detect, 10) then
 						SetVehicleExtra(veh_detect, 10, 1)
@@ -431,7 +414,7 @@ function DrawText3D(coords, text, size)
 
     local onScreen,_x,_y=World3dToScreen2d(coords.x,coords.y,coords.z + 1.0)
     local px,py,pz=table.unpack(GetGameplayCamCoords())
-    
+
     SetTextScale(0.35, 0.35)
     SetTextFont(4)
     SetTextProportional(1)
