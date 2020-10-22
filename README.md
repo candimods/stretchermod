@@ -1,5 +1,6 @@
-# stretchermod
+# stretchermod for ESX
 stretcher mod that can be used with candimods vehicle and ambulances for 5M 
+if you dont have ESX please use Non ESX Version.
 
 preview video https://youtu.be/VNUHTyffwtk
 
@@ -33,6 +34,7 @@ Compaitible Stretchers:
 3. Ferno Stretcher
 4. Ferno Coroner Stretcher 
 5. Coronavirus Stretcher 
+6. Rugged MX Pro Stretcher
 
 # Compatible vehicles:
 This mod is cross compatible with anyother model that uses the base script 
