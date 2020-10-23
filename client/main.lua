@@ -165,7 +165,7 @@ Citizen.CreateThread(function()
 						SetEntityCoords(PlayerPedId(), x, y, z)
 					end
 
-					if WarMenu.Button(Config.Language.fold_bed) then
+					if ESX and WarMenu.Button(Config.Language.fold_bed) then
             local can = false
             local model = GetEntityModel(closestObject)
             for k,v in pairs(Config.ItemsVeh) do
@@ -212,8 +212,8 @@ Citizen.CreateThread(function()
 						if not IsEntityPlayingAnim(PlayerPedId(), 'anim@heists@box_carry@', 'idle', 3) and not IsEntityAttachedToAnyVehicle(PlayerPedId()) then
 							BeginTextCommandDisplayHelp(labels[1][1])
 							EndTextCommandDisplayHelp(0, 0, 1, -1)
-								for _,m in pairs(lit) do
-									local prop = GetClosestVehicle(GetEntityCoords(PlayerPedId()), 4.0, GetHashKey(m.lit))
+								for k,v in pairs(Config.Lits) do
+									local prop = GetClosestVehicle(GetEntityCoords(PlayerPedId()), 4.0, GetHashKey(v.lit))
 									if prop ~= 0 then
 										prop_exist = prop
 									end
