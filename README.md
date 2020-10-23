@@ -50,5 +50,5 @@ This mod is cross compatible with anyother model that uses the base script
 2. add start stretecherscript to your server.cfg
 3. enjoy! 
 
-for support and compatible ambulances https://discord.io/candimods
+for support and compatible ambulances and stretchers please visit https://discord.io/candimods
 
