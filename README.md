@@ -58,6 +58,9 @@ for support and compatible ambulances and stretchers please visit https://discor
 
 
 # CandiMods Terms and Conditions 
+OPEN FOR COLLABOARTION WITH OTHER VEHICLE AND SCRIPT DEVS, ONLY A GOOD TEAM CAN GET THIS MOD FINISHED.
+SUBMIT A PULL REQUEST OR ISSUE TO GET COLLAB.
+
 Candi Mods Terms and Conditions For Public Mods >> you may use my models in fivem or SP, 
 you are NOT allowed to rip, re upload, redistribute, or repackage this modification. you
 are not allowed to upload this file and claim it as your own on any site, server, local, 
