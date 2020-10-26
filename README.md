@@ -55,7 +55,8 @@ https://github.com/candimods/stretchermod/wiki
 2. 2020 Ford F450 Ambulance
 3. EMS John Deer Gator & Trailer *
 4. E450 Ambulance
-5. more compaibility to be added later
+5. https://www.lcpdfr.com/downloads/gta5mods/vehiclemodels/26170-2015-2016-ford-f450-superduty-single-cab-ambulance-als-11/
+-  more compaibility to be added later
 
 # Install 
 Get latest releass in relasses tab, development under main branch
