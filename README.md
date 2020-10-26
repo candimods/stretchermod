@@ -31,13 +31,21 @@ https://youtu.be/lNZhb-iV0ak
 
 abiility to have more than one compatible stretcher 
 
-Compaitible Stretchers:
+#Compaitible Stretchers:
 1. Stryker M1 Stretcher 
 2. Stryker M1 Coroner Stretcher - buggy crashes
 3. Ferno Stretcher - buggy
 4. Ferno Coroner Stretcher - buggy 
 5. Coronavirus Stretcher 
 6. Rugged MX Pro Stretcher - buggy 
+
+#Props Spawning
+1. Hazmat Tent Set up -  prop_ld_binbag_01
+WIP looks like this https://www.youtube.com/watch?v=gHTuxDsa438&ab_channel=CandiceP.M%2CNRP
+
+other props that can be used EKG Monitor, medical bags
+Lucas Back Pack, and any other prop you can think of. 
+
 
 # Compatible vehicles:
 Check out the wiki page for more information on how to make your mod compatible
@@ -58,6 +66,9 @@ for support and compatible ambulances and stretchers please visit https://discor
 
 
 # CandiMods Terms and Conditions 
+OPEN FOR COLLABOARTION WITH OTHER VEHICLE AND SCRIPT DEVS, ONLY A GOOD TEAM CAN GET THIS MOD FINISHED.
+SUBMIT A PULL REQUEST OR ISSUE TO GET COLLAB.
+
 Candi Mods Terms and Conditions For Public Mods >> you may use my models in fivem or SP, 
 you are NOT allowed to rip, re upload, redistribute, or repackage this modification. you
 are not allowed to upload this file and claim it as your own on any site, server, local, 
