@@ -58,6 +58,7 @@ https://github.com/candimods/stretchermod/wiki
 5. more compaibility to be added later
 
 # Install 
+Get latest releass in relasses tab, development under main branch
 1. Drag and Drop Stretchermod folder fo your resources folder
 2. add start stretechermod to your server.cfg
 3. enjoy! 
