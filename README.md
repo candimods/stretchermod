@@ -33,11 +33,11 @@ abiility to have more than one compatible stretcher
 
 Compaitible Stretchers:
 1. Stryker M1 Stretcher 
-2. Stryker M1 Coroner Stretcher
-3. Ferno Stretcher
-4. Ferno Coroner Stretcher 
+2. Stryker M1 Coroner Stretcher - buggy crashes
+3. Ferno Stretcher - buggy
+4. Ferno Coroner Stretcher - buggy 
 5. Coronavirus Stretcher 
-6. Rugged MX Pro Stretcher
+6. Rugged MX Pro Stretcher - buggy 
 
 # Compatible vehicles:
 Check out the wiki page for more information on how to make your mod compatible
