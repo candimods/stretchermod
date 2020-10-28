@@ -62,6 +62,8 @@ https://github.com/candimods/stretchermod/wiki
 Get latest releass in relasses tab, development under main branch
 1. Drag and Drop Stretchermod folder fo your resources folder
 2. add start stretechermod to your server.cfg
+Please remove any previous versions of this script, and may conflict with other scrupts
+using warmenu.
 3. enjoy! 
 
 for support and compatible ambulances and stretchers please visit https://discord.io/candimods
