@@ -38,6 +38,7 @@ abiility to have more than one compatible stretcher
 4. Ferno Coroner Stretcher - buggy 
 5. Coronavirus Stretcher 
 6. Rugged MX Pro Stretcher - buggy 
+7. Basket Stretcher
 
 #Props Spawning
 1. Hazmat Tent Set up -  prop_ld_binbag_01
