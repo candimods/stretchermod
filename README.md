@@ -31,7 +31,7 @@ https://youtu.be/lNZhb-iV0ak
 
 abiility to have more than one compatible stretcher 
 
-#Compaitible Stretchers:
+#Included Stretchers:
 1. Stryker M1 Stretcher 
 2. Stryker M1 Coroner Stretcher - buggy crashes
 3. Ferno Stretcher - buggy
@@ -41,7 +41,7 @@ abiility to have more than one compatible stretcher
 
 #Props Spawning
 1. Hazmat Tent Set up -  prop_ld_binbag_01
-WIP looks like this https://www.youtube.com/watch?v=gHTuxDsa438&ab_channel=CandiceP.M%2CNRP
+WIP looks like this https://www.youtube.com/watch?v=gHTuxDsa438
 
 other props that can be used EKG Monitor, medical bags
 Lucas Back Pack, and any other prop you can think of. 
