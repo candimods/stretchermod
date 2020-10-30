@@ -214,8 +214,10 @@ Citizen.CreateThread(function()
     end
     if not prop_amb and GetVehiclePedIsIn(ped) == 0 and DoesEntityExist(veh_detect) then
       sleep = 5
-      local coords = GetEntityCoords(veh_detect) + GetEntityForwardVector(veh_detect) * - veh_detection
-      local coords_spawn = GetEntityCoords(veh_detect) + GetEntityForwardVector(veh_detect) * - (veh_detection + 4.0)
+      local veh_coords  = GetEntityCoords(veh_detect)
+      local veh_forward = GetEntityForwardVector(veh_detect)
+      local coords       = veh_coords + veh_forward * - veh_detection
+      local coords_spawn = veh_coords + veh_forward * - (veh_detection + 4.0)
       if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, coords.x, coords.y, coords.z) <= 5.0 then
         if not IsEntityPlayingAnim(ped, 'anim@heists@box_carry@', 'idle', 3) and not IsEntityAttachedToAnyVehicle(ped) then
           BeginTextCommandDisplayHelp(labels[1][1])
