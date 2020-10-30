@@ -14,6 +14,7 @@ Citizen.CreateThread(function()
     Citizen.Wait(0)
   end
 end)
+
 Citizen.CreateThread(function()
   while true do
     ped = PlayerPedId()
@@ -21,7 +22,6 @@ Citizen.CreateThread(function()
     Citizen.Wait(500)
   end
 end)
-
 
 RegisterNetEvent('stretchermod:SpawnItem')
 AddEventHandler('stretchermod:SpawnItem', function(key)
@@ -55,6 +55,7 @@ Citizen.CreateThread(function()
   local sleep = 2000
   while true do
     sleep = 2000
+    closestObject = nil
     for k,v in pairs(Config.Lits) do
       closestObject = GetClosestVehicle(pedCoords, 3.0, v.lit, 70)
       Lit = v
@@ -169,8 +170,7 @@ Citizen.CreateThread(function()
 
         if WarMenu.Button(Config.Language.go_out_bed) then
           DetachEntity(ped, true, true)
-          local x, y, z = table.unpack(GetEntityCoords(closestObject) + GetEntityForwardVector(closestObject) * - Lit.distance_stop)
-          SetEntityCoords(ped, x, y, z)
+          SetEntityCoords(ped, propCoords + propForward * - Lit.distance_stop)
         end
 
         if ESX and WarMenu.Button(Config.Language.fold_bed) then
