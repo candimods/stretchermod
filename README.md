@@ -2,6 +2,9 @@
 stretcher mod that can be used with candimods vehicle and ambulances for 5M 
 Can be used on ESx and Non ESX Servers
 
+This is an Expansive mod meant to bring realisim to EMS Roleplay. 
+Thanks to the contributing devs without you this mod would not be possible
+
 preview video https://youtu.be/VNUHTyffwtk
 
 orginal script by https://forum.cfx.re/t/release-litter-stretcher-v4-0-v2-4/760701
@@ -13,7 +16,7 @@ and transport players to the hospital for authenthic roleplay.
 
 edit the controls in the config.lua
 
-requires war menu which is included.
+requires warmenu which is included.
 
 ESX inventory management compaibility was added by contributing dev
 more stretchers and prop spawining ability added, Only works in ESX
