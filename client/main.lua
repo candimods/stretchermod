@@ -76,21 +76,10 @@ Citizen.CreateThread(function()
             WarMenu.OpenMenu('hopital')
           end
         elseif not IsEntityAttachedToEntity(closestObject, ped) and not IsEntityPlayingAnim(ped, 'anim@heists@box_carry@', 'idle', 3) then
-          if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, pickupCoords.x, pickupCoords.y, pickupCoords.z) <= 2.0 then
+          if (Vdist(pedCoords.x, pedCoords.y, pedCoords.z, pickupCoords.x,  pickupCoords.y,  pickupCoords.z)  <= 2.0)
+          or (Vdist(pedCoords.x, pedCoords.y, pedCoords.z, pickupCoords2.x, pickupCoords2.y, pickupCoords2.z) <= 1.5 and prop_amb) then
             hintToDisplay(Config.Language.take_bed)
             -- DrawText3D(0,0,0, Config.language.take_bed, -- waaaaaaa)
-            if IsControlJustPressed(0, Config.Press.take_bed) then
-              SetVehicleExtra(closestObject, 1, 0)
-              SetVehicleExtra(closestObject, 2, 1)
-              prendre(closestObject)
-            end
-          end
-
-          -- Weird
-          if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, pickupCoords2.x, pickupCoords2.y, pickupCoords2.z) <= 1.5 and prop_amb then
-            CancelEvent()
-          else
-            hintToDisplay(Config.Language.take_bed)
             if IsControlJustPressed(0, Config.Press.take_bed) then
               SetVehicleExtra(closestObject, 1, 0)
               SetVehicleExtra(closestObject, 2, 1)
