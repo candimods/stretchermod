@@ -101,13 +101,12 @@ Citizen.CreateThread(function()
         --- THIS CONTEXT BELOW WILL TOGGLE ON / OFF VEHICLES EXTRAS USE A REFERENCE WHEN ADD NEW MENU OPTIONS O IS OFF 1 IS ON
 
         if WarMenu.Button(Config.Language.toggle_iv) then
-          if not toggle then
+          toggle = not toggle
+          if toggle then
             SetVehicleExtra(closestObject, 5, 0)
           else
             SetVehicleExtra(closestObject, 5, 1)
           end
-
-          toggle = not toggle
         end
 
         if WarMenu.Button(Config.Language.toggle_lp15) then
