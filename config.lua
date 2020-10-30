@@ -14,14 +14,14 @@ Config              = {}
 Config.OpenMenuSpawn= {x = 266.62, y = -1354.23, z = 24.53}
 
 Config.Hash = {
-	{hash = "20f450ambo", detection = 2.4, depth = -1.0, height = 0.0},
-	{hash = "e450ambo", detection = 2.4, depth = -1.0, height = 0.0},
-	{hash = "16ramambo", detection = 2.4, depth = -1.0, height = 0.0},
-	{hash = "safdm2", detection = 2.4, depth = -1.0, height = 0.0},
-	{hash = "ambulance", detection = 2.4, depth = -1.0, height = 0.0},
-	{hash = "safdm3", detection = 2.4, depth = -1.0, height = 0.0},
-	{hash = "safr2", detection = 2.4, depth = -1.0, height = 0.0},
-	{hash = "emsgator", detection = 2.4, depth = -1.0, height = 0.0},
+	{hash = `20f450ambo`, detection = 2.4, depth = -1.0, height = 0.0},
+	{hash = `e450ambo`, detection = 2.4, depth = -1.0, height = 0.0},
+	{hash = `16ramambo`, detection = 2.4, depth = -1.0, height = 0.0},
+	{hash = `safdm2`, detection = 2.4, depth = -1.0, height = 0.0},
+	{hash = `ambulance`, detection = 2.4, depth = -1.0, height = 0.0},
+	{hash = `safdm3`, detection = 2.4, depth = -1.0, height = 0.0},
+	{hash = `safr2`, detection = 2.4, depth = -1.0, height = 0.0},
+	{hash = `emsgator`, detection = 2.4, depth = -1.0, height = 0.0},
 }
 
 Config.ItemsVeh = {
@@ -91,9 +91,9 @@ Config.lit_1 = {		--- coods every anim coords - z up and down - r is rotation - 
 }
 
 Config.Lits = {
-	{lit = "stretcher",          distance_stop = 2.4, anims = Config.lit_1, title = Config.Language.lit_1},
-	{lit = "stryker_M1",         distance_stop = 2.4, anims = Config.lit_1, title = Config.Language.lit_1},
-	{lit = "stryker_M1_coroner", distance_stop = 2.4, anims = Config.lit_1, title = Config.Language.lit_1},
-	{lit = "mxpro", distance_stop = 2.4, anims = Config.lit_1, title = Config.Language.lit_1},
-	{lit = "stretcher_basket", distance_stop = 2.4, anims = Config.lit_1, title = Config.Language.lit_1},
+	{lit = `stretcher`,          distance_stop = 2.4, anims = Config.lit_1, title = Config.Language.lit_1},
+	{lit = `stryker_M1`,         distance_stop = 2.4, anims = Config.lit_1, title = Config.Language.lit_1},
+	{lit = `stryker_M1_coroner`, distance_stop = 2.4, anims = Config.lit_1, title = Config.Language.lit_1},
+	{lit = `mxpro`,              distance_stop = 2.4, anims = Config.lit_1, title = Config.Language.lit_1},
+	{lit = `stretcher_basket`,   distance_stop = 2.4, anims = Config.lit_1, title = Config.Language.lit_1},
 }
