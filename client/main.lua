@@ -54,7 +54,7 @@ Citizen.CreateThread(function()
   while true do
     local sleep = 2000
     for k,v in pairs(Config.Lits) do
-      local closestObject = GetClosestVehicle(pedCoords, 3.0, GetHashKey(v.lit), 70)
+      local closestObject = GetClosestVehicle(pedCoords, 3.0, v.lit, 70)
 
       if DoesEntityExist(closestObject) then
         sleep = 5
@@ -200,7 +200,7 @@ Citizen.CreateThread(function()
   prop_exist = 0
   while true do
     for _,g in pairs(Config.Hash) do
-      local closestObject = GetClosestVehicle(pedCoords, 7.0, GetHashKey(g.hash), 18)
+      local closestObject = GetClosestVehicle(pedCoords, 7.0, g.hash, 18)
       if closestObject ~= 0 then
         veh_detect = closestObject
         veh_detection = g.detection
@@ -218,7 +218,7 @@ Citizen.CreateThread(function()
               BeginTextCommandDisplayHelp(labels[1][1])
               EndTextCommandDisplayHelp(0, 0, 1, -1)
               for k,v in pairs(Config.Lits) do
-                local prop = GetClosestVehicle(pedCoords, 4.0, GetHashKey(v.lit))
+                local prop = GetClosestVehicle(pedCoords, 4.0, v.lit)
                 if prop ~= 0 then
                   prop_exist = prop
                 end
