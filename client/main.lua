@@ -51,145 +51,147 @@ Citizen.CreateThread(function()
   WarMenu.SetMenuSubTextColor('hopital', 255, 255, 255, 255)
   WarMenu.SetMenuFocusColor('hopital', 255, 255, 255, 255)
   WarMenu.SetTitleBackgroundSprite('hopital', 'stretchermod', 'banner')
+  local closestObject, Lit = nil, nil
+  local sleep = 2000
   while true do
-    local sleep = 2000
+    sleep = 2000
     for k,v in pairs(Config.Lits) do
-      local closestObject = GetClosestVehicle(pedCoords, 3.0, v.lit, 70)
+      closestObject = GetClosestVehicle(pedCoords, 3.0, v.lit, 70)
+      Lit = v
+    end
+    if DoesEntityExist(closestObject) then
+      sleep = 5
+      local propCoords = GetEntityCoords(closestObject)
+      local propForward = GetEntityForwardVector(closestObject)
+      local litCoords = (propCoords + propForward)
+      local sitCoords = (propCoords + propForward * 0.1)
+      local pickupCoords = (propCoords + propForward * 1.2)
+      local pickupCoords2 = (propCoords + propForward * - 1.2)
 
-      if DoesEntityExist(closestObject) then
-        sleep = 5
-        local propCoords = GetEntityCoords(closestObject)
-        local propForward = GetEntityForwardVector(closestObject)
-        local litCoords = (propCoords + propForward)
-        local sitCoords = (propCoords + propForward * 0.1)
-        local pickupCoords = (propCoords + propForward * 1.2)
-        local pickupCoords2 = (propCoords + propForward * - 1.2)
-
-        if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, litCoords.x, litCoords.y, litCoords.z) <= 5.0 then
-          if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, sitCoords.x, sitCoords.y, sitCoords.z) <= 2.0 and not IsEntityPlayingAnim(ped, 'anim@heists@box_carry@', 'idle', 3) then
-            hintToDisplay(Config.Language.do_action)
-            if IsControlJustPressed(0, Config.Press.do_action) then
-              WarMenu.OpenMenu('hopital')
+      if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, litCoords.x, litCoords.y, litCoords.z) <= 5.0 then
+        if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, sitCoords.x, sitCoords.y, sitCoords.z) <= 2.0 and not IsEntityPlayingAnim(ped, 'anim@heists@box_carry@', 'idle', 3) then
+          hintToDisplay(Config.Language.do_action)
+          if IsControlJustPressed(0, Config.Press.do_action) then
+            WarMenu.OpenMenu('hopital')
+          end
+        elseif IsEntityAttachedToEntity(closestObject, ped) == false and not IsEntityPlayingAnim(ped, 'anim@heists@box_carry@', 'idle', 3) then
+          if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, pickupCoords.x, pickupCoords.y, pickupCoords.z) <= 2.0 then
+            hintToDisplay(Config.Language.take_bed)
+            -- DrawText3D(0,0,0, Config.language.take_bed, -- waaaaaaa)
+            if IsControlJustPressed(0, Config.Press.take_bed) then
+              SetVehicleExtra(closestObject, 1, 0)
+              SetVehicleExtra(closestObject, 2, 1)
+              prendre(closestObject)
             end
-          elseif IsEntityAttachedToEntity(closestObject, ped) == false and not IsEntityPlayingAnim(ped, 'anim@heists@box_carry@', 'idle', 3) then
-            if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, pickupCoords.x, pickupCoords.y, pickupCoords.z) <= 2.0 then
-              hintToDisplay(Config.Language.take_bed)
-              -- DrawText3D(0,0,0, Config.language.take_bed, -- waaaaaaa)
-              if IsControlJustPressed(0, Config.Press.take_bed) then
-                SetVehicleExtra(closestObject, 1, 0)
-                SetVehicleExtra(closestObject, 2, 1)
-                prendre(closestObject)
-              end
-            end
+          end
 
-            if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, pickupCoords2.x, pickupCoords2.y, pickupCoords2.z) <= 1.5 and prop_amb == true then
-              CancelEvent()
-            else
-              hintToDisplay(Config.Language.take_bed)
-              if IsControlJustPressed(0, Config.Press.take_bed) then
-                SetVehicleExtra(closestObject, 1, 0)
-                SetVehicleExtra(closestObject, 2, 1)
-                prendre(closestObject)
-              end
+          if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, pickupCoords2.x, pickupCoords2.y, pickupCoords2.z) <= 1.5 and prop_amb == true then
+            CancelEvent()
+          else
+            hintToDisplay(Config.Language.take_bed)
+            if IsControlJustPressed(0, Config.Press.take_bed) then
+              SetVehicleExtra(closestObject, 1, 0)
+              SetVehicleExtra(closestObject, 2, 1)
+              prendre(closestObject)
             end
           end
         end
+      end
 
-        if WarMenu.IsMenuOpened('hopital') then
-          for k2,v2 in pairs(v.anims) do
-            if WarMenu.Button(v2.name) then
-              LoadAnim(v2.anim)
-              AttachEntityToEntity(ped, closestObject, ped, v2.x, v2.y, v2.z, 0.0, 0.0, v2.r, 0.0, false, false, false, false, 2, true)
-              TaskPlayAnim(ped, v2.anim, v2.lib, 8.0, 8.0, -1, 1, 0, false, false, false)
-            end
+      if WarMenu.IsMenuOpened('hopital') then
+        for k2,v2 in pairs(Lit.anims) do
+          if WarMenu.Button(v2.name) then
+            LoadAnim(v2.anim)
+            AttachEntityToEntity(ped, closestObject, ped, v2.x, v2.y, v2.z, 0.0, 0.0, v2.r, 0.0, false, false, false, false, 2, true)
+            TaskPlayAnim(ped, v2.anim, v2.lib, 8.0, 8.0, -1, 1, 0, false, false, false)
           end
-
-          --- THIS CONTEXT BELOW WILL TOGGLE ON / OFF VEHICLES EXTRAS USE A REFERENCE WHEN ADD NEW MENU OPTIONS O IS OFF 1 IS ON
-
-          if WarMenu.Button(Config.Language.toggle_iv) then
-            if not toggle then
-              SetVehicleExtra(closestObject, 5, 0)
-            else
-              SetVehicleExtra(closestObject, 5, 1)
-            end
-
-            toggle = not toggle
-          end
-
-          if WarMenu.Button(Config.Language.toggle_lp15) then
-            if not toggle then
-              SetVehicleExtra(closestObject, 3, 0)
-            else
-              SetVehicleExtra(closestObject, 3, 1)
-            end
-
-            toggle = not toggle
-          end
-
-          if WarMenu.Button(Config.Language.toggle_lucas) then
-            if not toggle then
-              SetVehicleExtra(closestObject, 6, 0)
-            else
-              SetVehicleExtra(closestObject, 6, 1)
-            end
-
-            toggle = not toggle
-          end
-
-          if WarMenu.Button(Config.Language.toggle_backboard) then
-            if not toggle then
-              SetVehicleExtra(closestObject, 4, 0)
-            else
-              SetVehicleExtra(closestObject, 4, 1)
-            end
-
-            toggle = not toggle
-          end
-
-          if WarMenu.Button(Config.Language.toggle_scoop) then
-            if not toggle then
-              SetVehicleExtra(closestObject, 7, 0)
-            else
-              SetVehicleExtra(closestObject, 7, 1)
-            end
-
-            toggle = not toggle
-          end
-
-          if WarMenu.Button(Config.Language.toggle_seat) then
-            if IsVehicleDoorFullyOpen(closestObject, 4) == false then
-              SetVehicleDoorOpen(closestObject, 4, false)
-            else
-              SetVehicleDoorShut(closestObject, 4, false)
-            end
-          end
-
-          if WarMenu.Button(Config.Language.go_out_bed) then
-            DetachEntity(ped, true, true)
-            local x, y, z = table.unpack(GetEntityCoords(closestObject) + GetEntityForwardVector(closestObject) * - v.distance_stop)
-            SetEntityCoords(ped, x, y, z)
-          end
-
-          if ESX and WarMenu.Button(Config.Language.fold_bed) then
-            local can = false
-            local model = GetEntityModel(closestObject)
-            for k,v in pairs(Config.ItemsVeh) do
-              if model == v.hash then
-                can = k
-                break
-              end
-            end
-            if can ~= false then
-              ESX.Game.DeleteVehicle(closestObject)
-              TriggerServerEvent('stretchermod:DeleteVeh', can)
-            end
-          end
-
-          if WarMenu.Button('Close Menu') then
-            WarMenu.CloseMenu('hopital')
-          end
-          WarMenu.Display()
         end
+
+        --- THIS CONTEXT BELOW WILL TOGGLE ON / OFF VEHICLES EXTRAS USE A REFERENCE WHEN ADD NEW MENU OPTIONS O IS OFF 1 IS ON
+
+        if WarMenu.Button(Config.Language.toggle_iv) then
+          if not toggle then
+            SetVehicleExtra(closestObject, 5, 0)
+          else
+            SetVehicleExtra(closestObject, 5, 1)
+          end
+
+          toggle = not toggle
+        end
+
+        if WarMenu.Button(Config.Language.toggle_lp15) then
+          if not toggle then
+            SetVehicleExtra(closestObject, 3, 0)
+          else
+            SetVehicleExtra(closestObject, 3, 1)
+          end
+
+          toggle = not toggle
+        end
+
+        if WarMenu.Button(Config.Language.toggle_lucas) then
+          if not toggle then
+            SetVehicleExtra(closestObject, 6, 0)
+          else
+            SetVehicleExtra(closestObject, 6, 1)
+          end
+
+          toggle = not toggle
+        end
+
+        if WarMenu.Button(Config.Language.toggle_backboard) then
+          if not toggle then
+            SetVehicleExtra(closestObject, 4, 0)
+          else
+            SetVehicleExtra(closestObject, 4, 1)
+          end
+
+          toggle = not toggle
+        end
+
+        if WarMenu.Button(Config.Language.toggle_scoop) then
+          if not toggle then
+            SetVehicleExtra(closestObject, 7, 0)
+          else
+            SetVehicleExtra(closestObject, 7, 1)
+          end
+
+          toggle = not toggle
+        end
+
+        if WarMenu.Button(Config.Language.toggle_seat) then
+          if IsVehicleDoorFullyOpen(closestObject, 4) == false then
+            SetVehicleDoorOpen(closestObject, 4, false)
+          else
+            SetVehicleDoorShut(closestObject, 4, false)
+          end
+        end
+
+        if WarMenu.Button(Config.Language.go_out_bed) then
+          DetachEntity(ped, true, true)
+          local x, y, z = table.unpack(GetEntityCoords(closestObject) + GetEntityForwardVector(closestObject) * - Lit.distance_stop)
+          SetEntityCoords(ped, x, y, z)
+        end
+
+        if ESX and WarMenu.Button(Config.Language.fold_bed) then
+          local can = false
+          local model = GetEntityModel(closestObject)
+          for k2,v2 in pairs(Config.ItemsVeh) do
+            if model == v.hash then
+              can = k
+              break
+            end
+          end
+          if can ~= false then
+            ESX.Game.DeleteVehicle(closestObject)
+            TriggerServerEvent('stretchermod:DeleteVeh', can)
+          end
+        end
+
+        if WarMenu.Button('Close Menu') then
+          WarMenu.CloseMenu('hopital')
+        end
+        WarMenu.Display()
       end
     end
     Citizen.Wait(sleep)
@@ -198,7 +200,9 @@ end)
 
 Citizen.CreateThread(function()
   prop_exist = 0
+  local sleep = 2000
   while true do
+    sleep = 2000
     for _,g in pairs(Config.Hash) do
       local closestObject = GetClosestVehicle(pedCoords, 7.0, g.hash, 18)
       if closestObject ~= 0 then
@@ -208,67 +212,64 @@ Citizen.CreateThread(function()
         prop_height = g.height
       end
     end
-    if prop_amb == false then
-      if GetVehiclePedIsIn(ped) == 0 then
-        if DoesEntityExist(veh_detect) then
-          local coords = GetEntityCoords(veh_detect) + GetEntityForwardVector(veh_detect) * - veh_detection
-          local coords_spawn = GetEntityCoords(veh_detect) + GetEntityForwardVector(veh_detect) * - (veh_detection + 4.0)
-          if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, coords.x, coords.y, coords.z) <= 5.0 then
-            if not IsEntityPlayingAnim(ped, 'anim@heists@box_carry@', 'idle', 3) and not IsEntityAttachedToAnyVehicle(ped) then
-              BeginTextCommandDisplayHelp(labels[1][1])
-              EndTextCommandDisplayHelp(0, 0, 1, -1)
-              for k,v in pairs(Config.Lits) do
-                local prop = GetClosestVehicle(pedCoords, 4.0, v.lit)
-                if prop ~= 0 then
-                  prop_exist = prop
-                end
+    if not prop_amb and GetVehiclePedIsIn(ped) == 0 and DoesEntityExist(veh_detect) then
+      sleep = 5
+      local coords = GetEntityCoords(veh_detect) + GetEntityForwardVector(veh_detect) * - veh_detection
+      local coords_spawn = GetEntityCoords(veh_detect) + GetEntityForwardVector(veh_detect) * - (veh_detection + 4.0)
+      if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, coords.x, coords.y, coords.z) <= 5.0 then
+        if not IsEntityPlayingAnim(ped, 'anim@heists@box_carry@', 'idle', 3) and not IsEntityAttachedToAnyVehicle(ped) then
+          BeginTextCommandDisplayHelp(labels[1][1])
+          EndTextCommandDisplayHelp(0, 0, 1, -1)
+          for k,v in pairs(Config.Lits) do
+            local prop = GetClosestVehicle(pedCoords, 4.0, v.lit)
+            if prop ~= 0 then
+              prop_exist = prop
+            end
+          end
+          if IsEntityAttachedToEntity(prop_exist, ped) ~= 0 or prop_exist ~= 0 then
+            if IsControlJustPressed(0, Config.Press.out_vehicle_bed) then
+              if IsVehicleDoorFullyOpen(veh_detect, 5) then
+                SetVehicleDoorShut(veh_detect, 5, false)
+              else
+                SetVehicleDoorOpen(veh_detect, 5, false)
               end
-              if IsEntityAttachedToEntity(prop, ped) ~= 0 or prop ~= 0 then
-                if IsControlJustPressed(0, Config.Press.out_vehicle_bed) then
-                  if IsVehicleDoorFullyOpen(veh_detect, 5) then
-                    SetVehicleDoorShut(veh_detect, 5, false)
-                  else
-                    SetVehicleDoorOpen(veh_detect, 5, false)
-                  end
-                end
-                if IsControlJustPressed(0, Config.Press.extend_powerload) then
-                  if IsVehicleDoorFullyOpen(veh_detect, 4) then
-                    SetVehicleDoorShut(veh_detect, 4, false)
-                  else
-                    SetVehicleDoorOpen(veh_detect, 4, false)
-                  end
-                end
-                if IsControlJustPressed(0, Config.Press.lights) then
-                  if IsVehicleExtraTurnedOn(veh_detect, 11) then
-                    SetVehicleExtra(veh_detect, 11, 0)
-                    SetVehicleExtra(veh_detect, 12, 0)
-                  else
-                    SetVehicleExtra(veh_detect, 11, 1)
-                    SetVehicleExtra(veh_detect, 12, 1)
-                  end
-                end
-                if IsControlJustPressed(0, Config.Press.extra_1) then
-                  if IsVehicleExtraTurnedOn(veh_detect, 10) then
-                    SetVehicleExtra(veh_detect, 10, 1)
-                    SetVehicleExtra(veh_detect, 9, 0)
-                    SetVehicleExtra(veh_detect, 11, 0)
-                    SetVehicleExtra(veh_detect, 12, 0)
-                    SetVehicleExtra(veh_detect, 8, 0)
-                  else
-                    SetVehicleExtra(veh_detect, 10, 0)
-                    SetVehicleExtra(veh_detect, 9, 1)
-                    SetVehicleExtra(veh_detect, 11, 1)
-                    SetVehicleExtra(veh_detect, 12, 1)
-                    SetVehicleExtra(veh_detect, 8, 1)
-                  end
-                end
+            end
+            if IsControlJustPressed(0, Config.Press.extend_powerload) then
+              if IsVehicleDoorFullyOpen(veh_detect, 4) then
+                SetVehicleDoorShut(veh_detect, 4, false)
+              else
+                SetVehicleDoorOpen(veh_detect, 4, false)
+              end
+            end
+            if IsControlJustPressed(0, Config.Press.lights) then
+              if IsVehicleExtraTurnedOn(veh_detect, 11) then
+                SetVehicleExtra(veh_detect, 11, 0)
+                SetVehicleExtra(veh_detect, 12, 0)
+              else
+                SetVehicleExtra(veh_detect, 11, 1)
+                SetVehicleExtra(veh_detect, 12, 1)
+              end
+            end
+            if IsControlJustPressed(0, Config.Press.extra_1) then
+              if IsVehicleExtraTurnedOn(veh_detect, 10) then
+                SetVehicleExtra(veh_detect, 10, 1)
+                SetVehicleExtra(veh_detect, 9, 0)
+                SetVehicleExtra(veh_detect, 11, 0)
+                SetVehicleExtra(veh_detect, 12, 0)
+                SetVehicleExtra(veh_detect, 8, 0)
+              else
+                SetVehicleExtra(veh_detect, 10, 0)
+                SetVehicleExtra(veh_detect, 9, 1)
+                SetVehicleExtra(veh_detect, 11, 1)
+                SetVehicleExtra(veh_detect, 12, 1)
+                SetVehicleExtra(veh_detect, 8, 1)
               end
             end
           end
         end
       end
     end
-    Citizen.Wait(0)
+    Citizen.Wait(sleep)
   end
 end)
 
