@@ -75,7 +75,7 @@ Citizen.CreateThread(function()
           if IsControlJustPressed(0, Config.Press.do_action) then
             WarMenu.OpenMenu('hopital')
           end
-        elseif IsEntityAttachedToEntity(closestObject, ped) == false and not IsEntityPlayingAnim(ped, 'anim@heists@box_carry@', 'idle', 3) then
+        elseif not IsEntityAttachedToEntity(closestObject, ped) and not IsEntityPlayingAnim(ped, 'anim@heists@box_carry@', 'idle', 3) then
           if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, pickupCoords.x, pickupCoords.y, pickupCoords.z) <= 2.0 then
             hintToDisplay(Config.Language.take_bed)
             -- DrawText3D(0,0,0, Config.language.take_bed, -- waaaaaaa)
@@ -86,7 +86,8 @@ Citizen.CreateThread(function()
             end
           end
 
-          if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, pickupCoords2.x, pickupCoords2.y, pickupCoords2.z) <= 1.5 and prop_amb == true then
+          -- Weird
+          if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, pickupCoords2.x, pickupCoords2.y, pickupCoords2.z) <= 1.5 and prop_amb then
             CancelEvent()
           else
             hintToDisplay(Config.Language.take_bed)
@@ -121,50 +122,47 @@ Citizen.CreateThread(function()
         end
 
         if WarMenu.Button(Config.Language.toggle_lp15) then
-          if not toggle then
-            SetVehicleExtra(closestObject, 3, 0)
-          else
-            SetVehicleExtra(closestObject, 3, 1)
-          end
-
           toggle = not toggle
+          if toggle then
+            SetVehicleExtra(closestObject, 3, 1)
+          else
+            SetVehicleExtra(closestObject, 3, 0)
+          end
         end
 
         if WarMenu.Button(Config.Language.toggle_lucas) then
-          if not toggle then
+          toggle = not toggle
+          if toggle then
             SetVehicleExtra(closestObject, 6, 0)
           else
             SetVehicleExtra(closestObject, 6, 1)
           end
 
-          toggle = not toggle
         end
 
         if WarMenu.Button(Config.Language.toggle_backboard) then
-          if not toggle then
+          toggle = not toggle
+          if toggle then
             SetVehicleExtra(closestObject, 4, 0)
           else
             SetVehicleExtra(closestObject, 4, 1)
           end
-
-          toggle = not toggle
         end
 
         if WarMenu.Button(Config.Language.toggle_scoop) then
-          if not toggle then
+          toggle = not toggle
+          if toggle then
             SetVehicleExtra(closestObject, 7, 0)
           else
             SetVehicleExtra(closestObject, 7, 1)
           end
-
-          toggle = not toggle
         end
 
         if WarMenu.Button(Config.Language.toggle_seat) then
-          if IsVehicleDoorFullyOpen(closestObject, 4) == false then
-            SetVehicleDoorOpen(closestObject, 4, false)
-          else
+          if IsVehicleDoorFullyOpen(closestObject, 4) then
             SetVehicleDoorShut(closestObject, 4, false)
+          else
+            SetVehicleDoorOpen(closestObject, 4, false)
           end
         end
 
@@ -222,8 +220,9 @@ Citizen.CreateThread(function()
         if not IsEntityPlayingAnim(ped, 'anim@heists@box_carry@', 'idle', 3) and not IsEntityAttachedToAnyVehicle(ped) then
           BeginTextCommandDisplayHelp(labels[1][1])
           EndTextCommandDisplayHelp(0, 0, 1, -1)
+          local prop
           for k,v in pairs(Config.Lits) do
-            local prop = GetClosestVehicle(pedCoords, 4.0, v.lit)
+            prop = GetClosestVehicle(pedCoords, 4.0, v.lit)
             if prop ~= 0 then
               prop_exist = prop
             end
