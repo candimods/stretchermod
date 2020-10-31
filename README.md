@@ -1,6 +1,7 @@
 # FiveEMS
-stretcher mod that can be used with candimods vehicle and ambulances for 5M 
-Can be used on ESx and Non ESX Servers
+
+stretcher mod is now FiveEMS a mod that can do so much more than its predessor 
+for 5M ESx and Non ESX Servers
 
 This is an Expansive mod meant to bring realisim to EMS Roleplay. 
 Thanks to the contributing devs without you this mod would not be possible
