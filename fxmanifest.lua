@@ -1,7 +1,7 @@
 fx_version 'adamant'
 game 'gta5'
 
-description 'SAFD Pack by CandiMods Dev Team discord.io/candimods' 
+description 'by CandiMods Dev Team discord.io/candimods' 
 
 files {
 	'data/vehicles.meta',
