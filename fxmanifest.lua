@@ -1,7 +1,7 @@
 fx_version 'adamant'
 game 'gta5'
 
-description 'by CandiMods Dev Team discord.io/candimods' 
+description 'EMS Mod for 5M by CandiMods Dev Team discord.io/candimods' 
 
 files {
 	'data/vehicles.meta',
