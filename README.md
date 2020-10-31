@@ -44,12 +44,16 @@ abiility to have more than one compatible stretcher
 6. Rugged MX Pro Stretcher - buggy 
 7. Basket Stretcher
 
-#Props Spawning
+# Props Spawning
 1. Hazmat Tent Set up -  prop_ld_binbag_01
 WIP looks like this https://www.youtube.com/watch?v=gHTuxDsa438
-
+2. Medical Gear
+3. Medical Bags
 other props that can be used EKG Monitor, medical bags
 Lucas Back Pack, and any other prop you can think of. 
+
+# Custom EUP Peds
+comming soon... 
 
 
 # Compatible vehicles:
