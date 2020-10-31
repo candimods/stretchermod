@@ -6,7 +6,7 @@ local labels = {
 
 prop_amb = false
 veh_detect = 0
-local ped, pedCoords
+local ped, pedCoords = PlayerPedId(), GetEntityCoords(PlayerPedId())
 
 Citizen.CreateThread(function()
   while ESX == nil do
@@ -18,7 +18,7 @@ end)
 Citizen.CreateThread(function()
   while true do
     ped = PlayerPedId()
-    pedCoords = pedCoords
+    pedCoords = GetEntityCoords(ped)
     Citizen.Wait(500)
   end
 end)
@@ -58,8 +58,12 @@ Citizen.CreateThread(function()
     closestObject = nil
     for k,v in pairs(Config.Lits) do
       closestObject = GetClosestVehicle(pedCoords, 3.0, v.lit, 70)
-      Lit = v
+      if DoesEntityExist(closestObject) then
+        Lit = v
+        break
+      end
     end
+
     if DoesEntityExist(closestObject) then
       sleep = 5
       local propCoords = GetEntityCoords(closestObject)
