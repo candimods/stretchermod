@@ -49,8 +49,12 @@ abiility to have more than one compatible stretcher
 WIP looks like this https://www.youtube.com/watch?v=gHTuxDsa438
 2. Medical Gear
 3. Medical Bags
+4. Michaels Bookbag is included https://www.gta5-mods.com/misc/medical-prop-lucas-cpr-device
 other props that can be used EKG Monitor, medical bags
 Lucas Back Pack, and any other prop you can think of. 
+
+added alot of these props already to the mod 
+https://www.gta5-mods.com/misc/ems-medical-props
 
 # Custom EUP Peds
 comming soon... 
