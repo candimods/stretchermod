@@ -1,4 +1,4 @@
-# stretchermod for 5M
+# EMS Mod for 5M
 stretcher mod that can be used with candimods vehicle and ambulances for 5M 
 Can be used on ESx and Non ESX Servers
 
