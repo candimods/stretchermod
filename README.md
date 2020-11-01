@@ -56,7 +56,7 @@ Lucas Back Pack, and any other prop you can think of.
 added alot of these props already to the mod 
 https://www.gta5-mods.com/misc/ems-medical-props
 
-# Custom EUP Peds
+# Custom EUP Clothing
 FiveEMS EUP Clothing by Novo get it here https://discord.gg/cGGnRpw
 comming soon... 
 
