@@ -57,6 +57,7 @@ added alot of these props already to the mod
 https://www.gta5-mods.com/misc/ems-medical-props
 
 # Custom EUP Peds
+FiveEMS EUP Clothing by Novo get it here https://discord.gg/cGGnRpw
 comming soon... 
 
 
