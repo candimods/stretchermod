@@ -10,12 +10,12 @@ TriggerEvent('esx:getSharedObject', function(obj)
         local xPlayer = ESX.GetPlayerFromId(source)
         xPlayer.removeInventoryItem(v.item, v.remove)
       end
-      TriggerClientEvent('stretchermod:SpawnItem', source, k)
+      TriggerClientEvent('FiveEMS:SpawnItem', source, k)
     end)
   end
 
-  RegisterServerEvent('stretchermod:DeleteVeh')
-  AddEventHandler('stretchermod:DeleteVeh', function(key)
+  RegisterServerEvent('FiveEMS:DeleteVeh')
+  AddEventHandler('FiveEMS:DeleteVeh', function(key)
     local xPlayer = ESX.GetPlayerFromId(source)
     local v = Config.ItemsVeh[tonumber(key)]
     if v ~= nil and v.remove ~= nil and v.remove > 0 then

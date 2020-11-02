@@ -45,7 +45,7 @@ Citizen.CreateThread(function()
 
 	ESX.UI.Menu.RegisterType(MenuType, openMenu, closeMenu)
 
-	AddEventHandler('stretchermod:message:menu_submit', function(data)
+	AddEventHandler('FiveEMS:message:menu_submit', function(data)
 		local menu = ESX.UI.Menu.GetOpened(MenuType, data._namespace, data._name)
 
 		if menu.submit ~= nil then
@@ -53,7 +53,7 @@ Citizen.CreateThread(function()
 		end
 	end)
 
-	AddEventHandler('stretchermod:message:menu_cancel', function(data)
+	AddEventHandler('FiveEMS:message:menu_cancel', function(data)
 		local menu = ESX.UI.Menu.GetOpened(MenuType, data._namespace, data._name)
 
 		if menu.cancel ~= nil then
@@ -61,7 +61,7 @@ Citizen.CreateThread(function()
 		end
 	end)
 
-	AddEventHandler('stretchermod:message:menu_change', function(data)
+	AddEventHandler('FiveEMS:message:menu_change', function(data)
 		local menu = ESX.UI.Menu.GetOpened(MenuType, data._namespace, data._name)
 
 		for i=1, #data.elements, 1 do

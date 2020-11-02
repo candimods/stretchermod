@@ -32,8 +32,8 @@ Citizen.CreateThread(function()
   end
 end)
 
-RegisterNetEvent('stretchermod:SpawnItem')
-AddEventHandler('stretchermod:SpawnItem', function(key)
+RegisterNetEvent('FiveEMS:SpawnItem')
+AddEventHandler('FiveEMS:SpawnItem', function(key)
   local v = Config.ItemsVeh[key]
   if v ~= nil then
     local dimension = GetModelDimensions(v.hash, vector3(0,0,0), vector3(5.0,5.0,5.0))
@@ -356,7 +356,7 @@ function OpenSpawner()
     align    = 'top-left',
     elements = elements
   }, function(data, menu)
-    TriggerEvent('stretchermod:SpawnItem', data.current.key)
+    TriggerEvent('FiveEMS:SpawnItem', data.current.key)
     menu.close()
   end, function(data, menu)
     menu.close()
@@ -442,7 +442,7 @@ function OpenMenu()
       if can ~= false then
         menu.close()
         ESX.Game.DeleteVehicle(closestObject)
-        TriggerServerEvent('stretchermod:DeleteVeh', can)
+        TriggerServerEvent('FiveEMS:DeleteVeh', can)
       end
     end
   end, function(data, menu)
