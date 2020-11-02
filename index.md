@@ -90,16 +90,18 @@ I am working with Developers of Fire Calls outs and EMS call outs to incorporate
 _Will this work with any ambulance?_
 ```
 No, it will not, only if that ambulance has a bonnet in the back patient compartment. either way the vehicle developer will need to make there vehicle compatible to the script.
-refer to the wiki page to make your ambulance compatible with this mod.
+refer to the wiki page to make your ambulance compatible with this mod. https://github.com/candimods/FiveEMS/wiki
 ```
 _Can i use your mod with my vehicle?_
 ```
 Yes you may its public feel free to make tons of vehicles compatible with this mod, just credit the developers and link to the mod github original download.
 ```
 
-### Markdown
+### Wiki Page
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+https://github.com/candimods/FiveEMS/wiki
+
+learn how to make your mod compatible with this script.
 
 
 ```markdown
