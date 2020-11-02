@@ -19,7 +19,6 @@ files {
 -- data_file 'VEHICLE_METADATA_FILE' 'data/vehicles.meta'
 
 client_scripts {
-	'warmenu.lua',
 	'config.lua',
  	'client/main.lua',
   'ui/client/es_extended.lua', -- ui
