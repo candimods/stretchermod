@@ -35,6 +35,7 @@ Config.ItemsVeh = {
 }
 
 Config.Press = {
+	open_spawner = Keys["F7"],
 	open_menu = Keys["Y"],
 	take_bed = Keys["E"],
 	do_action = Keys["E"],

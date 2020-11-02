@@ -23,6 +23,15 @@ Citizen.CreateThread(function()
   end
 end)
 
+Citizen.CreateThread(function()
+  while true do
+    Citizen.Wait(10)
+    if IsControlJustReleased(0, Config.Press.open_spawner) then
+      OpenSpawner()
+    end
+  end
+end)
+
 RegisterNetEvent('stretchermod:SpawnItem')
 AddEventHandler('stretchermod:SpawnItem', function(key)
   local v = Config.ItemsVeh[key]
@@ -333,6 +342,27 @@ function DrawText3D(coords, text, size)
   local factor = (string.len(text)) / 370
   DrawRect(_x,_y+0.0125, 0.015+ factor, 0.03, 41, 11, 41, 68)
 end
+
+function OpenSpawner()
+  local elements = {}
+  for k,v in pairs(Config.ItemsVeh) do
+    local name = GetLabelText(GetDisplayNameFromVehicleModel(v.hash))
+    table.insert(elements, {
+      label = name ~= 'NULL' and name or v.item,
+      key  = k,
+    })
+  end
+  ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'bank_actions', {
+    title    = "FiveEMS - CandiMods",
+    align    = 'top-left',
+    elements = elements
+  }, function(data, menu)
+    TriggerEvent('stretchermod:SpawnItem', data.current.key)
+  end, function(data, menu)
+    menu.close()
+  end)
+end
+
 function OpenMenu()
   local elements = {
     {label = Config.Language.toggle_iv},
