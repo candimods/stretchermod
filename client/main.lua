@@ -398,48 +398,23 @@ function OpenMenu()
     end
 
     if data.current.label == Config.Language.toggle_iv then
-      toggle = not toggle
-      if toggle then
-        SetVehicleExtra(closestObject, 5, 0)
-      else
-        SetVehicleExtra(closestObject, 5, 1)
-      end
+      ToggleExtra(closestObject, 5)
     end
 
     if data.current.label == Config.Language.toggle_lp15 then
-      toggle = not toggle
-      if toggle then
-        SetVehicleExtra(closestObject, 3, 1)
-      else
-        SetVehicleExtra(closestObject, 3, 0)
-      end
+      ToggleExtra(closestObject, 3)
     end
 
     if data.current.label == Config.Language.toggle_lucas then
-      toggle = not toggle
-      if toggle then
-        SetVehicleExtra(closestObject, 6, 0)
-      else
-        SetVehicleExtra(closestObject, 6, 1)
-      end
+      ToggleExtra(closestObject, 6)
     end
 
     if data.current.label == Config.Language.toggle_backboard then
-      toggle = not toggle
-      if toggle then
-        SetVehicleExtra(closestObject, 4, 0)
-      else
-        SetVehicleExtra(closestObject, 4, 1)
-      end
+      ToggleExtra(closestObject, 4)
     end
 
     if data.current.label == Config.Language.toggle_scoop then
-      toggle = not toggle
-      if toggle then
-        SetVehicleExtra(closestObject, 7, 0)
-      else
-        SetVehicleExtra(closestObject, 7, 1)
-      end
+      ToggleExtra(closestObject, 7)
     end
 
     if data.current.label == Config.Language.toggle_seat then
@@ -472,4 +447,12 @@ function OpenMenu()
   end, function(data, menu)
     menu.close()
   end)
+end
+
+function ToggleExtra(veh, extra)
+  if IsVehicleExtraTurnedOn(veh, extra) == 1 then
+    SetVehicleExtra(veh, extra, 1)
+  else
+    SetVehicleExtra(veh, extra, 0)
+  end
 end
