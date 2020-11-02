@@ -13,44 +13,44 @@ allows the use of more than one stretcher, and to enable and disable stretcher o
 
 I’ve been developing stretchers for this mod and the hopefully the ability to have a coroner vehicle that transports a player .
 
-Stretcher Components
+__Stretcher Components__
 
-Longboard
-Scoop Stretcher
-EKG Monitor
-IV Pole
-Lucas3
-Scoop
+1. Longboard
+2. Scoop Stretcher
+3. EKG Monitor
+4. IV Pole
+5. Lucas3
+6. Scoop
 abiility to have more than one compatible stretcher
 
-Compactible Stretchers:
+__Compactible Stretchers:__
 
-Stryker M1 Stretcher
-Stryker M1 Coroner Stretcher :broken_heart:
-Ferno Stretcher :broken_heart:
-Ferno Coroner Stretcher :broken_heart:
-Coronavirus Stretcher
-Rugged MX Pro Stretcher :broken_heart:
-:new: Ferno Basket Stretcher
-:broken_heart: - refers to broken or buggy mod, working on a fix
+1. Stryker M1 Stretcher
+2. Stryker M1 Coroner Stretcher :broken_heart:
+3. Ferno Stretcher :broken_heart:
+4. Ferno Coroner Stretcher :broken_heart:
+5. Coronavirus Stretcher
+6. Rugged MX Pro Stretcher :broken_heart:
+7. :new: Ferno Basket Stretcher
+8. :broken_heart: - refers to broken or buggy mod, working on a fix
 
 development is going on here https://github.com/candimods/stretchermod 22
 
-Ideas for future:
+__Ideas for future:__
 combing this mod with all my vehicles, and other mods, and colloboration with other developers to make a Massive EMS Mod for 5M and SP
 New HTML Ui interface
 
-Coroner Mod Development
+__Coroner Mod Development__
 currently developing as part of the stretcher mod features
 Custom coroner stretcher with vehicle to load body’s in body bag. into and out of the vehicle.
 
-Helicopter Lift capabilities :helicopter:
+__Helicopter Lift capabilities :helicopter:__
 5M helo lift a player… or a helo ambulance
 
-#Ideas, suggestions, want to collab
+__Ideas, suggestions, want to collab__
 comment on this post if you have any ideas, improvements or want to collab, vehicle, textues devs, and script devs.
 
-Bugs
+### Bugs
 1. sometimes scripts gets stuck requires a restart
 2. some bugs with stretchers 
 This came about when i was developing a pack of vehicles for 5M
@@ -58,6 +58,7 @@ This came about when i was developing a pack of vehicles for 5M
 This pack is WIP and i tend to add more vehicles every day to it while waiting on script
 development.
 
+WIP San Andreas FD Pack, available to my patreons.
 ```
 Bcfd4 - international rescue engine
 Bcfd5 - International water tender
@@ -104,30 +105,3 @@ https://github.com/candimods/FiveEMS/wiki
 learn how to make your mod compatible with this script.
 
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/candimods/stretchermod/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
