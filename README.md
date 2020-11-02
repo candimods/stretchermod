@@ -5,6 +5,13 @@ Can be used on ESx and Non ESX Servers
 This is an Expansive mod meant to bring realisim to EMS Roleplay. 
 Thanks to the contributing devs without you this mod would not be possible
 
+# Updates 
+New F7 Menu, change keys and add more stretchers and vehicles in the config.lua.
+will spawn compaibile stretchers 
+and Hazmat Tent setup, be sure to setup on a flat ground or surface. 
+
+To return items to your inventory select FOLD BED. 
+
 preview video https://youtu.be/VNUHTyffwtk
 
 orginal script by https://forum.cfx.re/t/release-litter-stretcher-v4-0-v2-4/760701
