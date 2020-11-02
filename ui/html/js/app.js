@@ -14,7 +14,7 @@
 	;
 
 	window.ESX_MENU = {};
-	ESX_MENU.ResourceName = 'stretchermod';
+	ESX_MENU.ResourceName = 'FiveEMS';
 	ESX_MENU.opened = {};
 	ESX_MENU.focus = [];
 	ESX_MENU.pos = {};
