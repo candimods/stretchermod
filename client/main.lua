@@ -25,7 +25,7 @@ end)
 
 Citizen.CreateThread(function()
   while true do
-    Citizen.Wait(10)
+    Citizen.Wait(0)
     if IsControlJustReleased(0, Config.Press.open_spawner) then
       OpenSpawner()
     end
