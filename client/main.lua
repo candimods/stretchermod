@@ -345,9 +345,9 @@ end
 function OpenSpawner()
   local elements = {}
   for k,v in pairs(Config.ItemsVeh) do
-    local name = GetLabelText(GetDisplayNameFromVehicleModel(v.hash))
+    local name = GetDisplayNameFromVehicleModel(v.hash)
     table.insert(elements, {
-      label = name ~= 'NULL' and name or v.item,
+      label = name ~= 'CARNOTFOUND' and name or v.item,
       key  = k,
     })
   end
@@ -440,6 +440,7 @@ function OpenMenu()
         end
       end
       if can ~= false then
+        menu.close()
         ESX.Game.DeleteVehicle(closestObject)
         TriggerServerEvent('stretchermod:DeleteVeh', can)
       end
