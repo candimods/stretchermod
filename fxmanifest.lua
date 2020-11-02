@@ -4,9 +4,9 @@ game 'gta5'
 description 'by CandiMods Dev Team discord.io/candimods'
 
 files {
-	-- 'data/vehicles.meta',
+	'data/vehicles.meta',
 
-
+  -- UI
 	'ui/html/ui.html',
 	'ui/html/css/app.css',
   'ui/html/js/mustache.min.js',
@@ -16,15 +16,18 @@ files {
 	'ui/html/fonts/bankgothic.ttf'
 }
 
--- data_file 'VEHICLE_METADATA_FILE' 'data/vehicles.meta'
+data_file 'VEHICLE_METADATA_FILE' 'data/vehicles.meta'
 
 client_scripts {
 	'config.lua',
  	'client/main.lua',
-  'ui/client/es_extended.lua', -- ui
-  'ui/client/main.lua', -- ui
+
+  -- UI
+  'ui/client/es_extended.lua',
+  'ui/client/main.lua',
 }
 
+-- UI
 ui_page {
 	'ui/html/ui.html'
 }
