@@ -10,8 +10,7 @@
 
 .menu {
 	font-family: bankgothic;
-	min-width: 400px;
-	color: #fff;
+	min-width: 300px;
 	box-shadow: 0px 0px 50px 0px #000;
 	position: absolute;
 }
@@ -67,7 +66,9 @@
 }
 
 .menu .head {
-	background-color: #506be6;
+	background-color: #3a2aa1;
+	color: #ffffff;
+  font-weight: bold;
 	text-align: center;
 	height: 40px;
 	line-height: 40px;
@@ -79,16 +80,19 @@
 }
 
 .menu .menu-items .menu-item {
-	height: 40px;
+	height: 25px;
 	display: block;
-	background-color: #f1f1f1;
-	box-shadow: inset 1px 0px 0px 1px #b8b8b8;
-	height: 32px;
-	line-height: 32px;
-	color: #3A3A3A;
+	/* background-color: #575757; */
+	background-color: #000;
+  opacity: 0.60;
+	/* box-shadow: inset 1px 0px 0px 1px #b8b8b8; */
+	height: 25px;
+	line-height: 25px;
+	color: #ffffff;
 	text-align: center;
 }
 
 .menu .menu-items .menu-item.selected {
-	background-color: #d0d0d0;
+	background-color: #ffffff;
+	color: #575757;
 }
