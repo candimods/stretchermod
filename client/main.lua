@@ -7,11 +7,11 @@ local labels = {
 prop_amb = false
 veh_detect = 0
 local ped, pedCoords = PlayerPedId(), GetEntityCoords(PlayerPedId())
-
+local ESX = nil
 Citizen.CreateThread(function()
   while ESX == nil do
     TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-    Citizen.Wait(0)
+    Citizen.Wait(1000)
   end
 end)
 
