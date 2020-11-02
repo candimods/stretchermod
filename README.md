@@ -2,6 +2,9 @@
 stretcher mod that can be used with candimods vehicle and ambulances for 5M 
 Can be used on ESx and Non ESX Servers
 
+This is an Expansive mod meant to bring realisim to EMS Roleplay. 
+Thanks to the contributing devs without you this mod would not be possible
+
 preview video https://youtu.be/VNUHTyffwtk
 
 orginal script by https://forum.cfx.re/t/release-litter-stretcher-v4-0-v2-4/760701
@@ -13,7 +16,7 @@ and transport players to the hospital for authenthic roleplay.
 
 edit the controls in the config.lua
 
-requires war menu which is included.
+requires warmenu which is included.
 
 ESX inventory management compaibility was added by contributing dev
 more stretchers and prop spawining ability added, Only works in ESX
@@ -31,17 +34,18 @@ https://youtu.be/lNZhb-iV0ak
 
 abiility to have more than one compatible stretcher 
 
-#Compaitible Stretchers:
+#Included Stretchers:
 1. Stryker M1 Stretcher 
 2. Stryker M1 Coroner Stretcher - buggy crashes
 3. Ferno Stretcher - buggy
 4. Ferno Coroner Stretcher - buggy 
 5. Coronavirus Stretcher 
 6. Rugged MX Pro Stretcher - buggy 
+7. Basket Stretcher
 
 #Props Spawning
 1. Hazmat Tent Set up -  prop_ld_binbag_01
-WIP looks like this https://www.youtube.com/watch?v=gHTuxDsa438&ab_channel=CandiceP.M%2CNRP
+WIP looks like this https://www.youtube.com/watch?v=gHTuxDsa438
 
 other props that can be used EKG Monitor, medical bags
 Lucas Back Pack, and any other prop you can think of. 
@@ -62,6 +66,8 @@ https://github.com/candimods/stretchermod/wiki
 Get latest releass in relasses tab, development under main branch
 1. Drag and Drop Stretchermod folder fo your resources folder
 2. add start stretechermod to your server.cfg
+Please remove any previous versions of this script, and may conflict with other scrupts
+using warmenu.
 3. enjoy! 
 
 for support and compatible ambulances and stretchers please visit https://discord.io/candimods

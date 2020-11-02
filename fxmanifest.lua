@@ -1,16 +1,35 @@
 fx_version 'adamant'
 game 'gta5'
 
+description 'by CandiMods Dev Team discord.io/candimods'
+
 files {
 	'data/vehicles.meta',
+
+  -- UI
+	'ui/html/ui.html',
+	'ui/html/css/app.css',
+  'ui/html/js/mustache.min.js',
+	'ui/html/js/app.js',
+	'ui/html/js/wrapper.js',
+	'ui/html/fonts/pdown.ttf',
+	'ui/html/fonts/bankgothic.ttf'
 }
 
 data_file 'VEHICLE_METADATA_FILE' 'data/vehicles.meta'
 
 client_scripts {
-	'warmenu.lua',
 	'config.lua',
- 	'client/main.lua'
+ 	'client/main.lua',
+
+  -- UI
+  'ui/client/es_extended.lua',
+  'ui/client/main.lua',
+}
+
+-- UI
+ui_page {
+	'ui/html/ui.html'
 }
 
 server_scripts {
