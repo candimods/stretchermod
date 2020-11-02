@@ -1,4 +1,7 @@
 # Development FiveEMS Beta
+For Patreon Subsribers only 
+To unlock this mod please create a support ticket.
+
 stretcher mod that can be used with candimods vehicle and ambulances for 5M 
 Can be used on ESx and Non ESX Servers
 
@@ -11,10 +14,6 @@ will spawn compaibile stretchers
 and Hazmat Tent setup, be sure to setup on a flat ground or surface. 
 
 To return items to your inventory select FOLD BED. 
-
-preview video https://youtu.be/VNUHTyffwtk
-
-orginal script by https://forum.cfx.re/t/release-litter-stretcher-v4-0-v2-4/760701
 
 options to toggle compartment doors and scene lights
 
@@ -54,8 +53,7 @@ abiility to have more than one compatible stretcher
 1. Hazmat Tent Set up -  prop_ld_binbag_01
 WIP looks like this https://www.youtube.com/watch?v=gHTuxDsa438
 
-other props that can be used EKG Monitor, medical bags
-Lucas Back Pack, and any other prop you can think of. 
+
 
 
 # Compatible vehicles:
@@ -71,10 +69,13 @@ https://github.com/candimods/stretchermod/wiki
 
 # Install 
 Get latest releass in relasses tab, development under main branch
-1. Drag and Drop Stretchermod folder fo your resources folder
-2. add start stretechermod to your server.cfg
+1. Drag and Drop folder fo your resources folder, rename or make sure the folder is named FiveEMS
+(ITS MUST BE NAMED FiveEMS or it wont work!!!)
+2. add start FiveEMS to your server.cfg
 Please remove any previous versions of this script, and may conflict with other scrupts
 using warmenu.
+3. Press F7 to open menu 
+4. walk up to any compatible vehicle or stretcher to get a menu display option.
 3. enjoy! 
 
 for support and compatible ambulances and stretchers please visit https://discord.io/candimods
