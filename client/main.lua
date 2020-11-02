@@ -39,23 +39,20 @@ AddEventHandler('stretchermod:SpawnItem', function(key)
   end
 end)
 
+
+local propCoords, propForward, litCoords, sitCoords, pickupCoords, pickupCoords2
+local closestObject, Lit = nil, nil
 Citizen.CreateThread(function()
 
   for i = 1, #labels do
     AddTextEntry(labels[i][1], labels[i][2])
   end
 
-  WarMenu.CreateMenu('hopital', ' ')
-  WarMenu.SetTitleColor('hopital', 255, 255, 255, 255)
-  WarMenu.SetMenuTextColor('hopital', 255, 255, 255, 255)
-  WarMenu.SetMenuSubTextColor('hopital', 255, 255, 255, 255)
-  WarMenu.SetMenuFocusColor('hopital', 255, 255, 255, 255)
-  WarMenu.SetTitleBackgroundSprite('hopital', 'stretchermod', 'banner')
-  local closestObject, Lit = nil, nil
+
   local sleep = 2000
   while true do
     sleep = 2000
-    closestObject = nil
+    closestObject, Lit = nil, nil
     for k,v in pairs(Config.Lits) do
       closestObject = GetClosestVehicle(pedCoords, 3.0, v.lit, 70)
       if DoesEntityExist(closestObject) then
@@ -66,18 +63,18 @@ Citizen.CreateThread(function()
 
     if DoesEntityExist(closestObject) then
       sleep = 5
-      local propCoords = GetEntityCoords(closestObject)
-      local propForward = GetEntityForwardVector(closestObject)
-      local litCoords = (propCoords + propForward)
-      local sitCoords = (propCoords + propForward * 0.1)
-      local pickupCoords = (propCoords + propForward * 1.2)
-      local pickupCoords2 = (propCoords + propForward * - 1.2)
+      propCoords = GetEntityCoords(closestObject)
+      propForward = GetEntityForwardVector(closestObject)
+      litCoords = (propCoords + propForward)
+      sitCoords = (propCoords + propForward * 0.1)
+      pickupCoords = (propCoords + propForward * 1.2)
+      pickupCoords2 = (propCoords + propForward * - 1.2)
 
       if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, litCoords.x, litCoords.y, litCoords.z) <= 5.0 then
         if Vdist(pedCoords.x, pedCoords.y, pedCoords.z, sitCoords.x, sitCoords.y, sitCoords.z) <= 2.0 and not IsEntityPlayingAnim(ped, 'anim@heists@box_carry@', 'idle', 3) then
           hintToDisplay(Config.Language.do_action)
           if IsControlJustPressed(0, Config.Press.do_action) then
-            WarMenu.OpenMenu('hopital')
+            OpenMenu()
           end
         elseif not IsEntityAttachedToEntity(closestObject, ped) and not IsEntityPlayingAnim(ped, 'anim@heists@box_carry@', 'idle', 3) then
           if (Vdist(pedCoords.x, pedCoords.y, pedCoords.z, pickupCoords.x,  pickupCoords.y,  pickupCoords.z)  <= 2.0)
@@ -92,97 +89,6 @@ Citizen.CreateThread(function()
           end
         end
       end
-
-      if WarMenu.IsMenuOpened('hopital') then
-        for k2,v2 in pairs(Lit.anims) do
-          if WarMenu.Button(v2.name) then
-            LoadAnim(v2.anim)
-            AttachEntityToEntity(ped, closestObject, ped, v2.x, v2.y, v2.z, 0.0, 0.0, v2.r, 0.0, false, false, false, false, 2, true)
-            TaskPlayAnim(ped, v2.anim, v2.lib, 8.0, 8.0, -1, 1, 0, false, false, false)
-          end
-        end
-
-        --- THIS CONTEXT BELOW WILL TOGGLE ON / OFF VEHICLES EXTRAS USE A REFERENCE WHEN ADD NEW MENU OPTIONS O IS OFF 1 IS ON
-
-        if WarMenu.Button(Config.Language.toggle_iv) then
-          toggle = not toggle
-          if toggle then
-            SetVehicleExtra(closestObject, 5, 0)
-          else
-            SetVehicleExtra(closestObject, 5, 1)
-          end
-        end
-
-        if WarMenu.Button(Config.Language.toggle_lp15) then
-          toggle = not toggle
-          if toggle then
-            SetVehicleExtra(closestObject, 3, 1)
-          else
-            SetVehicleExtra(closestObject, 3, 0)
-          end
-        end
-
-        if WarMenu.Button(Config.Language.toggle_lucas) then
-          toggle = not toggle
-          if toggle then
-            SetVehicleExtra(closestObject, 6, 0)
-          else
-            SetVehicleExtra(closestObject, 6, 1)
-          end
-
-        end
-
-        if WarMenu.Button(Config.Language.toggle_backboard) then
-          toggle = not toggle
-          if toggle then
-            SetVehicleExtra(closestObject, 4, 0)
-          else
-            SetVehicleExtra(closestObject, 4, 1)
-          end
-        end
-
-        if WarMenu.Button(Config.Language.toggle_scoop) then
-          toggle = not toggle
-          if toggle then
-            SetVehicleExtra(closestObject, 7, 0)
-          else
-            SetVehicleExtra(closestObject, 7, 1)
-          end
-        end
-
-        if WarMenu.Button(Config.Language.toggle_seat) then
-          if IsVehicleDoorFullyOpen(closestObject, 4) then
-            SetVehicleDoorShut(closestObject, 4, false)
-          else
-            SetVehicleDoorOpen(closestObject, 4, false)
-          end
-        end
-
-        if WarMenu.Button(Config.Language.go_out_bed) then
-          DetachEntity(ped, true, true)
-          SetEntityCoords(ped, propCoords + propForward * - Lit.distance_stop)
-        end
-
-        if ESX and WarMenu.Button(Config.Language.fold_bed) then
-          local can = false
-          local model = GetEntityModel(closestObject)
-          for k2,v2 in pairs(Config.ItemsVeh) do
-            if model == v.hash then
-              can = k
-              break
-            end
-          end
-          if can ~= false then
-            ESX.Game.DeleteVehicle(closestObject)
-            TriggerServerEvent('stretchermod:DeleteVeh', can)
-          end
-        end
-
-        if WarMenu.Button('Close Menu') then
-          WarMenu.CloseMenu('hopital')
-        end
-        WarMenu.Display()
-      end
     end
     Citizen.Wait(sleep)
   end
@@ -194,9 +100,9 @@ Citizen.CreateThread(function()
   while true do
     sleep = 2000
     for _,g in pairs(Config.Hash) do
-      local closestObject = GetClosestVehicle(pedCoords, 7.0, g.hash, 18)
-      if closestObject ~= 0 then
-        veh_detect = closestObject
+      local _closestObject = GetClosestVehicle(pedCoords, 7.0, g.hash, 18)
+      if _closestObject ~= 0 then
+        veh_detect = _closestObject
         veh_detection = g.detection
         prop_depth = g.depth
         prop_height = g.height
@@ -426,4 +332,114 @@ function DrawText3D(coords, text, size)
   DrawText(_x,_y)
   local factor = (string.len(text)) / 370
   DrawRect(_x,_y+0.0125, 0.015+ factor, 0.03, 41, 11, 41, 68)
+end
+function OpenMenu()
+  local elements = {
+    {label = Config.Language.toggle_iv},
+    {label = Config.Language.toggle_lp15},
+    {label = Config.Language.toggle_lucas},
+    {label = Config.Language.toggle_backboard},
+    {label = Config.Language.toggle_scoop},
+    {label = Config.Language.toggle_seat},
+    {label = Config.Language.go_out_bed},
+    {label = Config.Language.fold_bed},
+  }
+  if Lit ~= nil then
+    for k2,v2 in pairs(Lit.anims) do
+      table.insert(elements, {
+        label = v2.name
+      })
+    end
+  end
+
+  ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'bank_actions', {
+    title    = "FiveEMS - CandiMods",
+    align    = 'top-left',
+    elements = elements
+  }, function(data, menu)
+    if Lit ~= nil then
+      for k2,v2 in pairs(Lit.anims) do
+        if data.current.label == v2.name then
+          LoadAnim(v2.anim)
+          AttachEntityToEntity(ped, closestObject, ped, v2.x, v2.y, v2.z, 0.0, 0.0, v2.r, 0.0, false, false, false, false, 2, true)
+          TaskPlayAnim(ped, v2.anim, v2.lib, 8.0, 8.0, -1, 1, 0, false, false, false)
+        end
+      end
+    end
+
+    if data.current.label == Config.Language.toggle_iv then
+      toggle = not toggle
+      if toggle then
+        SetVehicleExtra(closestObject, 5, 0)
+      else
+        SetVehicleExtra(closestObject, 5, 1)
+      end
+    end
+
+    if data.current.label == Config.Language.toggle_lp15 then
+      toggle = not toggle
+      if toggle then
+        SetVehicleExtra(closestObject, 3, 1)
+      else
+        SetVehicleExtra(closestObject, 3, 0)
+      end
+    end
+
+    if data.current.label == Config.Language.toggle_lucas then
+      toggle = not toggle
+      if toggle then
+        SetVehicleExtra(closestObject, 6, 0)
+      else
+        SetVehicleExtra(closestObject, 6, 1)
+      end
+    end
+
+    if data.current.label == Config.Language.toggle_backboard then
+      toggle = not toggle
+      if toggle then
+        SetVehicleExtra(closestObject, 4, 0)
+      else
+        SetVehicleExtra(closestObject, 4, 1)
+      end
+    end
+
+    if data.current.label == Config.Language.toggle_scoop then
+      toggle = not toggle
+      if toggle then
+        SetVehicleExtra(closestObject, 7, 0)
+      else
+        SetVehicleExtra(closestObject, 7, 1)
+      end
+    end
+
+    if data.current.label == Config.Language.toggle_seat then
+      if IsVehicleDoorFullyOpen(closestObject, 4) then
+        SetVehicleDoorShut(closestObject, 4, false)
+      else
+        SetVehicleDoorOpen(closestObject, 4, false)
+      end
+    end
+
+    if data.current.label == Config.Language.go_out_bed then
+      DetachEntity(ped, true, true)
+      SetEntityCoords(ped, propCoords + propForward * - Lit.distance_stop)
+    end
+
+    if data.current.label == Config.Language.fold_bed then
+      local can = false
+      local model = GetEntityModel(closestObject)
+      for k2,v2 in pairs(Config.ItemsVeh) do
+        if model == v2.hash then
+          can = k
+          break
+        end
+      end
+      if can ~= false then
+        ESX.Game.DeleteVehicle(closestObject)
+        TriggerServerEvent('stretchermod:DeleteVeh', can)
+      end
+    end
+  end, function(data, menu)
+    menu.close()
+  end)
 end

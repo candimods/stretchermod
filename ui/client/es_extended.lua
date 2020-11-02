@@ -1,11 +1,28 @@
 local ESX                     = {}
+ESX.Game                      = {}
 ESX.UI                        = {}
 ESX.UI.HUD                    = {}
 ESX.UI.HUD.RegisteredElements = {}
 ESX.UI.Menu                   = {}
 ESX.UI.Menu.RegisteredTypes   = {}
 ESX.UI.Menu.Opened            = {}
+ESX.Streaming                 = {}
 
+function ESX.Streaming.RequestModel(modelHash, cb)
+  modelHash = (type(modelHash) == 'number' and modelHash or GetHashKey(modelHash))
+
+  if not HasModelLoaded(modelHash) and IsModelInCdimage(modelHash) then
+    RequestModel(modelHash)
+
+    while not HasModelLoaded(modelHash) do
+      Citizen.Wait(1)
+    end
+  end
+
+  if cb ~= nil then
+    cb()
+  end
+end
 
 ESX.UI.HUD.SetDisplay = function(opacity)
 	SendNUIMessage({
@@ -202,6 +219,77 @@ ESX.UI.ShowInventoryItemNotification = function(add, item, count)
 		count  = count
 	})
 end
+
+ESX.Game.SpawnObject = function(model, coords, cb)
+	local model = (type(model) == 'number' and model or GetHashKey(model))
+
+	Citizen.CreateThread(function()
+		ESX.Streaming.RequestModel(model)
+
+		local obj = CreateObject(model, coords.x, coords.y, coords.z, true, false, true)
+
+		if cb then
+			cb(obj)
+		end
+	end)
+end
+
+ESX.Game.SpawnVehicle = function(modelName, coords, heading, cb)
+	local model = (type(modelName) == 'number' and modelName or GetHashKey(modelName))
+
+	Citizen.CreateThread(function()
+		ESX.Streaming.RequestModel(model)
+
+		-- local vehicle = CreateVehicle(model, coords.x, coords.y, coords.z, heading, true, false)
+		local vehicle = CreateVehicle(model, coords.x, coords.y, coords.z, heading, true, true)
+		local id      = NetworkGetNetworkIdFromEntity(vehicle)
+
+		SetNetworkIdCanMigrate(id, true)
+		SetEntityAsMissionEntity(vehicle, true, false)
+		SetVehicleHasBeenOwnedByPlayer(vehicle, true)
+		SetVehicleNeedsToBeHotwired(vehicle, false)
+		SetModelAsNoLongerNeeded(model)
+		RequestCollisionAtCoord(coords.x, coords.y, coords.z)
+		SetVehicleEngineOn(vehicle, true, true, false)
+		local Waiting = GetGameTimer()
+		while not HasCollisionLoadedAroundEntity(vehicle) and GetGameTimer() < Waiting + 5000 do
+			RequestCollisionAtCoord(coords.x, coords.y, coords.z)
+			Citizen.Wait(0)
+		end
+		SetVehicleOnGroundProperly(vehicle)
+
+   if cb then
+			cb(vehicle)
+		end
+
+	end)
+end
+
+ESX.Game.DeleteVehicle = function(vehicle)
+	NetworkRequestControlOfEntity(vehicle)
+
+	local timeout = 2000
+	while timeout > 0 and not NetworkHasControlOfEntity(vehicle) do
+			Wait(100)
+			timeout = timeout - 100
+	end
+
+	SetEntityAsMissionEntity(vehicle, true, true)
+
+	local timeout = 2000
+	while timeout > 0 and not IsEntityAMissionEntity(vehicle) do
+			Wait(100)
+			timeout = timeout - 100
+	end
+
+	Citizen.InvokeNative( 0xEA386986E786A54F, Citizen.PointerValueIntInitialized( vehicle ) )
+
+	if (DoesEntityExist(vehicle)) then
+			DeleteEntity(vehicle)
+	end
+end
+
+
 
 AddEventHandler('esx:getSharedObject', function(cb)
 	cb(ESX)
