@@ -22,6 +22,7 @@ Config.Hash = {
 	{hash = `safdm3`, detection = 2.4, depth = -1.0, height = 0.0},
 	{hash = `safr2`, detection = 2.4, depth = -1.0, height = 0.0},
 	{hash = `emsgator`, detection = 2.4, depth = -1.0, height = 0.0},
+	{hash = `coronervan`, detection = 2.4, depth = -1.0, height = 0.0},
 }
 
 Config.ItemsVeh = {
@@ -30,8 +31,8 @@ Config.ItemsVeh = {
   {hash = `stryker_M1`,         type = 'veh',  item = 'stretcher2', remove = 1},
   {hash = `stryker_M1_coroner`, type = 'veh',  item = 'stretcher3', remove = 1},
   {hash = `prop_ld_binbag_01`,  type = 'prop', item = 'stretcher4', remove = 1}, -- When using the stretcher  item, it will spawn a prop_ld_binbag_01 prop and remove 1x item
-  {hash = `mxpro`,			    type = 'veh',  item = 'stretcher5', remove = 1},
-  {hash = `stretcher_basket`,	type = 'veh',  item = 'stretcher5', remove = 1},
+  {hash = `mxpro`,              type = 'veh',  item = 'stretcher5', remove = 1},
+  {hash = `stretcher_basket`,	type = 'veh',  item = 'stretcher6', remove = 1},
 }
 
 Config.Press = {
