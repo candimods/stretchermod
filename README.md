@@ -6,14 +6,30 @@ for 5M ESx and Non ESX Servers
 This is an Expansive mod meant to bring realisim to EMS Roleplay. 
 Thanks to the contributing devs without you this mod would not be possible
 
+#Features
+1. Ability to swap between stretchers
+2. Transports Players on Stretcher
+3. New Stretchers, Covid and Coroner stretcher!!
+4. New Coroner Vehicle
+5. Coroner vehicle and stretcher works similar to EMS
+toggle on/off bodybag and sheets.
+6. Spawing Decontamination Tent
+7. New Props with DP emotes you can equip
+EKG Monitor, Medical Bags, Books Bags, Lucas Bookbag
+
+more features comming soon... keep up the suggesstion and submit issue for bug reports
+
+
 preview video https://youtu.be/VNUHTyffwtk
 
 orginal script by https://forum.cfx.re/t/release-litter-stretcher-v4-0-v2-4/760701
 
-options to toggle compartment doors and scene lights
+
+options to toggle compartment doors and scene lights on compatibile vehicles
 
 expanded stretcher menu allows you toggle on/off stretcher options
 and transport players to the hospital for authenthic roleplay.  
+iniate CPR, and Perform compresssions with the LUCAS3 Device
 
 edit the controls in the config.lua
 
@@ -37,13 +53,14 @@ abiility to have more than one compatible stretcher
 
 #Included Stretchers:
 1. Stryker M1 Stretcher 
-2. Stryker M1 Coroner Stretcher - buggy crashes
+2. Stryker M1 Coroner Stretcher - :new:
 3. Ferno Stretcher - buggy
 4. Ferno Coroner Stretcher - buggy 
-5. Coronavirus Stretcher 
+5. Coronavirus Stretcher - no lucas3
 6. Rugged MX Pro Stretcher - buggy 
-7. Basket Stretcher
+7. Basket Stretcher :new: no extras
 
+* you should become familair with each stretchaer and its options, as the menu options dont reflect each stretchers capablities.
 # Props Spawning
 1. Hazmat Tent Set up -  prop_ld_binbag_01
 WIP looks like this https://www.youtube.com/watch?v=gHTuxDsa438
