@@ -51,9 +51,9 @@ https://youtu.be/lNZhb-iV0ak
 
 abiility to have more than one compatible stretcher 
 
-#Included Stretchers:
+# Included Stretchers:
 1. Stryker M1 Stretcher 
-2. Stryker M1 Coroner Stretcher - :new:
+2. Stryker M1 Coroner Stretcher - one extra :new:
 3. Ferno Stretcher - buggy
 4. Ferno Coroner Stretcher - buggy 
 5. Coronavirus Stretcher - no lucas3
@@ -78,7 +78,6 @@ https://www.gta5-mods.com/misc/ems-medical-props
 
 # Custom EUP Clothing
 FiveEMS EUP Clothing by Novo get it here https://discord.gg/cGGnRpw
-comming soon... 
 
 
 # Compatible vehicles:
@@ -96,6 +95,7 @@ https://github.com/candimods/stretchermod/wiki
 # EMS Gator and CoTrailer
 1. Please use a comparable script to attach the gator to the trailer. 
 Here is an example https://forum.cfx.re/t/vtow-a-simple-vehicle-tow-script-including-trailers-support/191640/
+or similar script
 
 # Install 
 Get latest releass in relasses tab, development under main branch
