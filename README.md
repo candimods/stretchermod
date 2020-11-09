@@ -90,6 +90,10 @@ https://github.com/candimods/stretchermod/wiki
 6. 2020 Transit Van Coroner Van https://nextgenerationroleplay.com/index.php?/files/file/117-coroner-transit-van/
 -  more compaible vehicles on my Patreaon Account https://www.patreon.com/candimods
 
+# EMS Gator and CoTrailer
+1. Please use a comparable script to attach the gator to the trailer. 
+Here is an example https://forum.cfx.re/t/vtow-a-simple-vehicle-tow-script-including-trailers-support/191640/
+
 # Install 
 Get latest releass in relasses tab, development under main branch
 1. Drag and Drop folder fo your resources folder rename to FiveEMS
