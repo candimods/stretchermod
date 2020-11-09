@@ -70,6 +70,9 @@ WIP looks like this https://www.youtube.com/watch?v=gHTuxDsa438
 other props that can be used EKG Monitor, medical bags
 Lucas Back Pack, and any other prop you can think of. 
 
+download dpemotes fpr props with animations
+https://forum.cfx.re/t/dpemotes-1-7-390-emotes-walkingstyles-keybinding-dances-expressions-and-shared-emotes/843105/111
+
 added alot of these props already to the mod 
 https://www.gta5-mods.com/misc/ems-medical-props
 
