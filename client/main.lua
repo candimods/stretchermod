@@ -167,8 +167,8 @@ Citizen.CreateThread(function()
           local can = false
           local model = GetEntityModel(closestObject)
           for k2,v2 in pairs(Config.ItemsVeh) do
-            if model == v.hash then
-              can = k
+            if model == v2.hash then
+              can = k2
               break
             end
           end
