@@ -94,8 +94,7 @@ https://github.com/candimods/stretchermod/wiki
 
 # EMS Gator and CoTrailer
 1. Please use a comparable script to attach the gator to the trailer. 
-Here is an example https://forum.cfx.re/t/vtow-a-simple-vehicle-tow-script-including-trailers-support/191640/
-or similar script
+see compation scripts
 
 # Install 
 Get latest releass in relasses tab, development under main branch
