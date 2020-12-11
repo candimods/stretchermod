@@ -107,6 +107,11 @@ using warmenu.
 
 for support and compatible ambulances and stretchers please visit https://discord.io/candimods
 
+# Companion Scripts (A must have!)
+1. https://forum.cfx.re/t/release-qalle-wheelchair-wheelchair-for-ems-standalone/
+2. https://forum.cfx.re/t/hosels-realistic-fire-hose-model-london-studios/
+3. https://forum.cfx.re/t/release-c-vehicle-attachment-and-tow-resource/
+4. https://forum.cfx.re/t/dpemotes-1-7-390-emotes-walkingstyles-keybinding-dances-expressions-and-shared-emotes/
 
 # CandiMods Terms and Conditions 
 OPEN FOR COLLABOARTION WITH OTHER VEHICLE AND SCRIPT DEVS, ONLY A GOOD TEAM CAN GET THIS MOD FINISHED.
