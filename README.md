@@ -1,4 +1,4 @@
-# FiveEMS
+# FiveEMS Legacy Version
 
 stretcher mod is now FiveEMS a mod that can do so much more than its predessor 
 for 5M ESx and Non ESX Servers
