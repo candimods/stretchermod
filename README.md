@@ -1,4 +1,5 @@
 # FiveEMS Legacy Version
+Grab the Premium Version on store.candimods.com
 
 stretcher mod is now FiveEMS a mod that can do so much more than its predessor 
 for 5M ESx and Non ESX Servers
