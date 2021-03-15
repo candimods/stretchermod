@@ -1,8 +1,10 @@
 # FiveEMS Legacy Version
 Grab the Premium Version on https://store.candimods.com
 
+Premium Does so much more helos, a.i's, and much more
 
-stretcher mod is now FiveEMS a mod that can do so much more than its predessor 
+
+stretcher script is now FiveEMS a mod that can do so much more than its predessor 
 for 5M ESx and Non ESX Servers
 
 This is an Expansive mod meant to bring realisim to EMS Roleplay. 
