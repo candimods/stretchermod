@@ -93,6 +93,7 @@ https://github.com/candimods/stretchermod/wiki
 5. https://www.lcpdfr.com/downloads/gta5mods/vehiclemodels/26170-2015-2016-ford-f450-superduty-single-cab-ambulance-als-11/
 6. 2020 Transit Van Coroner Van https://nextgenerationroleplay.com/index.php?/files/file/117-coroner-transit-van/
 -  more compaible vehicles on my Patreaon Account https://www.patreon.com/candimods
+-  7. SAFD Pack, EMS Gator, and Ambulances https://store.candimods.com/package/4215577
 
 # EMS Gator and CoTrailer
 1. Please use a comparable script to attach the gator to the trailer. 
