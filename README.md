@@ -1,7 +1,9 @@
 # FiveEMS Legacy Version
+Grab the Premium Version on https://store.candimods.com
+WE NO LONGER SUPPORT THE LEGACY VERSIONS AS THE PREMIUM VERSION HAS ADVANCED SO 
+MUCH FAR PAST OUR EXPECTATIONS.
 
-stretcher mod is now FiveEMS a mod that can do so much more than its predessor 
-for 5M ESx and Non ESX Servers
+Premium Does so much more helos, a.i's, and much more
 
 This is an Expansive mod meant to bring realisim to EMS Roleplay. 
 Thanks to the contributing devs without you this mod would not be possible
@@ -91,6 +93,8 @@ https://github.com/candimods/stretchermod/wiki
 5. https://www.lcpdfr.com/downloads/gta5mods/vehiclemodels/26170-2015-2016-ford-f450-superduty-single-cab-ambulance-als-11/
 6. 2020 Transit Van Coroner Van https://nextgenerationroleplay.com/index.php?/files/file/117-coroner-transit-van/
 -  more compaible vehicles on my Patreaon Account https://www.patreon.com/candimods
+7. SAFD Pack, EMS Gator, and Ambulances https://store.candimods.com/package/4215577
+8. EMS Gator and Ambulances https://store.candimods.com/package/4378187
 
 # EMS Gator and CoTrailer
 1. Please use a comparable script to attach the gator to the trailer. 
