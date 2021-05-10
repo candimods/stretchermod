@@ -1,5 +1,6 @@
 # FiveEMS Legacy Version
 Grab the Premium Version on https://store.candimods.com
+Premium Documentation https://github.com/candimods/FiveEMS_Premium
 WE NO LONGER SUPPORT THE LEGACY VERSIONS AS THE PREMIUM VERSION HAS ADVANCED SO 
 MUCH FAR PAST OUR EXPECTATIONS.
 
